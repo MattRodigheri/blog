@@ -22,7 +22,7 @@ class App extends React.Component {
     }
     return (
       <div>
-        <Nav newPost={this.newPost}/>
+        <Nav newPost={this.newPost} />
         {post}
       </div>
     )
