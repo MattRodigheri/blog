@@ -1,3 +1,70 @@
- .block {
-   display: block;
- }
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative');
+
+* {
+  box-sizing: border-box;
+}
+
+.post {
+  width: 90%;
+  margin: auto;
+}
+
+.formcontainer {
+  width: 70%;
+  margin: auto;
+}
+
+.post p {
+  font-family: 'Cinzel Decorative', cursive;
+  margin-top: 2em;
+  color: #303262;
+}
+
+.post input {
+  display: block;
+  width: 50%;
+  background-color: #FFF;
+  border: 1px solid #303262;
+  border-radius: 2px;
+  color: #303262;
+  padding: 10px 18px;
+  font-size: 1.1em;
+  font-family: Optima, sans-serif;
+}
+
+.post textarea {
+  display: block;
+  width: 100%;
+  height: 20em;
+  margin: auto;
+  background-color: #FFF;
+  border: 1px solid #303262;
+  border-radius: 2px;
+  color: #303262;
+  padding: 10px 18px;
+  font-size: 1.1em;
+  font-family: Optima, sans-serif;
+  font-weight: lighter;
+}
+
+textarea {
+  resize: none
+}
+
+.post input, textarea:focus {
+  outline: 0;
+}
+
+.post button {
+  font-family: 'Cinzel Decorative', cursive;
+  margin-top: 2em;
+  background-color: #FFF;
+  border: 1px solid #303262;
+  border-radius: 2px;
+  color: #303262;
+  padding: 10px 18px;
+  text-align: center;
+  text-decoration: none;
+  font-size: inherit;
+  float: right;
+}

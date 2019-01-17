@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from './Nav.jsx';
 import Post from './Post.jsx';
 import moment from 'moment';
+import styles from './../styles/App.css';
 
 
 class App extends React.Component {
@@ -9,7 +10,8 @@ class App extends React.Component {
     super();
 
     this.state = {
-      newPost: false,
+      //CHANGE BACK TO TRUE
+      newPost: true,
       postDate: moment().format('MMMM Do YYYY'),
       postTitle: '',
       postText: ''
