@@ -11,7 +11,6 @@ const getPosts = function (data) {
     if (error) {
       data(error, null);
     } else {
-      console.log(results)
       data(null, results);
     }
   });

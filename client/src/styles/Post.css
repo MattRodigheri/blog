@@ -10,7 +10,7 @@
   margin: auto;
 }
 
-.formcontainer {
+.formContainer {
   width: 70%;
   margin: auto;
 }
@@ -64,4 +64,12 @@ textarea {
   text-decoration: none;
   font-size: inherit;
   float: right;
+}
+
+.bottomBorder {
+  margin: 6em auto 0 auto;
+  width: 70%;
+  height: .6em;
+  background-color: #4A52E8;
+  border-radius: 2px;
 }

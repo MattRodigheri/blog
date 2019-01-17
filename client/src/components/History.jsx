@@ -1,18 +1,18 @@
 import React from 'react';
-import styles from './../styles/Post.css';
+import styles from './../styles/History.css';
 
 const History = (props) => {
   const posts = props.posts.map((post, index) =>
-    <div className="historypost" key={index}>
-      <p>{post.date}</p>
-      <p>{post.title}</p>
-      <p>{post.entry}</p>
+    <div key={index} className="oldPost">
+      <p className="date">{post.date}</p>
+      <p className="title">{post.title}</p>
+      <p className="entry">{post.entry}</p>
     </div>
   )
 
   return (
-    <div>
-      {posts}
+    <div className="oldPostsContainer">
+      <div>{posts}</div>
     </div>
   );
 }
