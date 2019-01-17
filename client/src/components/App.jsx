@@ -10,8 +10,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      //CHANGE BACK TO TRUE
-      newPost: true,
+      newPost: false,
       postDate: moment().format('MMMM Do YYYY'),
       postTitle: '',
       postText: ''
