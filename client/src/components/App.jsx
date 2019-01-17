@@ -1,6 +1,8 @@
 import React from 'react';
+import $ from 'jquery';
 import Nav from './Nav.jsx';
 import Post from './Post.jsx';
+import History from './History.jsx';
 import moment from 'moment';
 import styles from './../styles/App.css';
 
@@ -10,6 +12,7 @@ class App extends React.Component {
     super();
 
     this.state = {
+      allPosts: [],
       newPost: false,
       postDate: moment().format('MMMM Do YYYY'),
       postTitle: '',
@@ -19,6 +22,20 @@ class App extends React.Component {
     this.newPost = this.newPost.bind(this);
     this.savePostTitle = this.savePostTitle.bind(this);
     this.savePostText = this.savePostText.bind(this);
+  }
+
+  componentDidMount() {
+    $.ajax({
+      url: '/posts',
+      method: 'GET',
+      success: (data) => {
+        this.setState({
+          allPosts: data
+        })
+      },
+      error: function(err) {
+      }
+    });
   }
 
   newPost() {
@@ -42,6 +59,7 @@ class App extends React.Component {
       <div>
         <Nav newPost={this.newPost} />
         {post}
+        <History posts={this.state.allPosts}/>
       </div>
     )
   }
