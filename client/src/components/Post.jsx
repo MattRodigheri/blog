@@ -9,7 +9,7 @@ const Post = (props) => {
         <input type='textbox' onChange={props.savePostTitle}/>
         <p>Entry</p>
         <textarea onChange={props.savePostText}></textarea>
-        <button onClick={() => console.log(props.postTitle)}>Post</button>
+        <button onClick={props.postPOST}>Post</button>
       </div>
       <div className="bottomBorder"></div>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+import axios from 'axios';
 import Nav from './Nav.jsx';
 import Post from './Post.jsx';
 import History from './History.jsx';
@@ -22,20 +22,19 @@ class App extends React.Component {
     this.newPost = this.newPost.bind(this);
     this.savePostTitle = this.savePostTitle.bind(this);
     this.savePostText = this.savePostText.bind(this);
+    this.postPOST = this.postPOST.bind(this);
   }
 
   componentDidMount() {
-    $.ajax({
-      url: '/posts',
-      method: 'GET',
-      success: (data) => {
+    axios.get('/posts')
+      .then((response) => {
         this.setState({
-          allPosts: data
+          allPosts: response.data
         })
-      },
-      error: function(err) {
-      }
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   newPost() {
@@ -50,10 +49,28 @@ class App extends React.Component {
     this.setState({postText: event.target.value});
   }
 
+  postPOST() {
+    axios.post('/posts', {
+      date: this.state.postDate,
+      title: this.state.postTitle,
+      text: this.state.postText
+    })
+    .then(
+      this.componentDidMount()
+    )
+  }
+
   render() {
     let post;
     if (this.state.newPost) {
-      post = <Post savePostTitle={this.savePostTitle} savePostText={this.savePostText} postTitle={this.state.postTitle}/>
+      post = <Post
+        savePostTitle={this.savePostTitle}
+        savePostText={this.savePostText}
+        postDate={this.state.postDate}
+        postTitle={this.state.postTitle}
+        postText={this.state.postText}
+        postPOST={this.postPOST}
+      />
     }
     return (
       <div>

@@ -7,26 +7,23 @@ var connection = mysql.createConnection({
 
 
 const getPosts = function (data) {
-  connection.query('SELECT * FROM posts', function (error, results) {
-    if (error) {
-      data(error, null);
+  connection.query('SELECT * FROM posts ORDER BY id DESC', function (err, res) {
+    if (err) {
+      data(err, null);
     } else {
-      data(null, results);
+      data(null, res);
     }
   });
 };
 
-// const addPost = function (data) {
-//   connection.query(`insert into posts values ('date', 'title', 'entry');`, function (error, results) {
-//     if (error) {
-//       console.log(error);
-//       data(error, null);
-//     } else {
-//       console.log(results)
-//       data(null, results);
-//     }
-//   });
-// };
+const addPost = function (input, callback) {
+  connection.query(`INSERT INTO posts (date, title, entry) VALUES ('${input.date}', '${input.title}', '${input.text}');`, function (err, data) {
+    if (err) {
+      console.log(err);
+      callback(err, null);
+    }
+  });
+};
 
 module.exports.getPosts = getPosts;
-// module.exports.addPost = addPost;
+module.exports.addPost = addPost;
