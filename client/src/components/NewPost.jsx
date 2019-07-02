@@ -5,8 +5,8 @@ import axios from "axios";
 // import styles from "./../styles/Post.css";
 
 class NewPost extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       postDate: moment().format("MMMM Do YYYY"),
@@ -21,7 +21,7 @@ class NewPost extends React.Component {
 
   makePost() {
     axios
-      .post("/posts", {
+      .post("/api/posts", {
         date: this.state.postDate,
         title: this.state.postTitle,
         text: this.state.postText
@@ -32,6 +32,7 @@ class NewPost extends React.Component {
       .catch(error => {
         console.log(error);
       });
+    this.props.history.push("/");
   }
 
   savePostTitle(event) {
