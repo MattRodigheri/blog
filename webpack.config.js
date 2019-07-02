@@ -1,6 +1,6 @@
 module.exports = {
   // entry: "./client/src/index.jsx",
-  entry: ["@babel/polyfill", "./client/src/index.jsx"],
+  entry: ["@babel/polyfill", "./client/src/index.js"],
   output: {
     // path: __dirname + "deployment",
     path: __dirname + "/client/dist",

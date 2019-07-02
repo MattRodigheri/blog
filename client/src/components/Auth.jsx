@@ -1,5 +1,5 @@
 import auth0 from "auth0-js";
-import keys from "../../keys.js";
+import keys from "../../../keys.js";
 
 class Auth {
   constructor() {

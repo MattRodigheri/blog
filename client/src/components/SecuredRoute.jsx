@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import auth0Client from "../Auth";
-import NewPost from "../components/NewPost.jsx";
+import auth0Client from "./Auth.jsx";
+import NewPost from "./NewPost.jsx";
 
 function SecuredRoute(props) {
   const { component: Component, path } = props;

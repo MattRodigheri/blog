@@ -9,10 +9,9 @@ import {
 import styles from "./../styles/Nav.css";
 import AllPosts from "./AllPosts.jsx";
 import NewPost from "./NewPost.jsx";
-import auth0Client from "../Auth";
+import auth0Client from "./Auth.jsx";
 
 const Nav = props => {
-  console.log(props);
   const signOut = () => {
     auth0Client.signOut();
     props.history.replace("/");
