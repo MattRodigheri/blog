@@ -31,8 +31,15 @@ const checkJwt = jwt({
 
 app.post("/posts", bodyParser.json(), (req, res) => {
   // app.post("/posts", checkJwt, (req, res) => {
-  console.log(req.body);
   controllers.addPost(req.body, err => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
+app.delete("/posts", bodyParser.json(), (req, res) => {
+  controllers.deletePost(req.body, err => {
     if (err) {
       res.status(500).send(err);
     }

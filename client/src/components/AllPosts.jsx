@@ -27,7 +27,7 @@ class AllPosts extends React.Component {
 
   render() {
     const posts = this.state.posts.map((post, index) => {
-      return <Post key={index} post={post} />;
+      return <Post key={post.id} post={post} />;
     });
     return <div>{posts}</div>;
   }

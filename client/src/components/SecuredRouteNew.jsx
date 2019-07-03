@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import auth0Client from "./Auth.jsx";
 import NewPost from "./NewPost.jsx";
 
-function SecuredRoute(props) {
+function SecuredRouteNew(props) {
   const { component: Component, path } = props;
   return (
     <Route
@@ -19,4 +19,4 @@ function SecuredRoute(props) {
   );
 }
 
-export default SecuredRoute;
+export default SecuredRouteNew;

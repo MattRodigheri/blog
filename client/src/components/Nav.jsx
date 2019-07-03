@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import styles from "./../styles/Nav.css";
 import AllPosts from "./AllPosts.jsx";
-import NewPost from "./NewPost.jsx";
+// import NewPost from "./NewPost.jsx";
 import auth0Client from "./Auth.jsx";
 
 const Nav = props => {
@@ -27,6 +27,7 @@ const Nav = props => {
       {auth0Client.isAuthenticated() && (
         <div>
           <Link to="/newpost">New Post</Link>
+          <Link to="/editposts">Edit Posts</Link>
           <button
             onClick={() => {
               signOut();

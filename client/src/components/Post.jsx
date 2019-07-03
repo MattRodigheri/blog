@@ -8,7 +8,7 @@ class Post extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id={this.props.post.id}>
         <div>{this.props.post.date}</div>
         <div>{this.props.post.title}</div>
         <div>{this.props.post.entry}</div>
