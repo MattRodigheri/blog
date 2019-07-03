@@ -16,17 +16,17 @@ const Nav = props => {
     auth0Client.signOut();
     props.history.replace("/");
   };
+
   return (
     // <Router>
-
     <div className="navbar">
       <Link to="/">Home</Link>
-      <Link to="/newpost">New Post</Link>
       {!auth0Client.isAuthenticated() && (
         <button onClick={auth0Client.signIn}>Sign In</button>
       )}
       {auth0Client.isAuthenticated() && (
         <div>
+          <Link to="/newpost">New Post</Link>
           <button
             onClick={() => {
               signOut();
@@ -36,12 +36,8 @@ const Nav = props => {
           </button>
         </div>
       )}
-      {/* <Switch> */}
       <Route exact path="/" component={AllPosts} />
-      {/* <Route exact path="/newpost" component={NewPost} />
-        </Switch> */}
     </div>
-    // </Router>
   );
 };
 

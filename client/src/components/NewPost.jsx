@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 // import styles from "./../styles/Post.css";
 
@@ -59,4 +60,4 @@ class NewPost extends React.Component {
   }
 }
 
-export default NewPost;
+export default withRouter(NewPost);

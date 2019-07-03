@@ -13,7 +13,6 @@ function SecuredRoute(props) {
           auth0Client.signIn();
           return <div />;
         }
-        // return <Component />;
         return <NewPost />;
       }}
     />

@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
 import styles from "./../styles/App.css";
+import Post from "./Post.jsx";
 
 class AllPosts extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      posts: [1, 2, 3]
+      posts: []
     };
   }
 
@@ -26,15 +27,8 @@ class AllPosts extends React.Component {
 
   render() {
     const posts = this.state.posts.map((post, index) => {
-      return (
-        <div key={index}>
-          <div>{post.date}</div>
-          <div>{post.title}</div>
-          <div>{post.entry}</div>
-        </div>
-      );
+      return <Post key={index} post={post} />;
     });
-
     return <div>{posts}</div>;
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Nav from "./Nav.jsx";
+import AllPosts from "./AllPosts.jsx";
 import Callback from "./Callback.jsx";
 import SecuredRoute from "./SecuredRoute.jsx";
 import NewPost from "./NewPost.jsx";
