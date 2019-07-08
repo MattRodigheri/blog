@@ -16,6 +16,7 @@ class AllPosts extends React.Component {
     axios
       .get("/api/posts")
       .then(response => {
+        console.log(response.data);
         this.setState({
           posts: response.data
         });

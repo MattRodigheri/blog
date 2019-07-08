@@ -15,11 +15,13 @@ class NewPost extends React.Component {
       postDate: moment().format("MMMM Do YYYY"),
       postTitle: "",
       postText: "",
-      uploadedFileCloudinaryUrl: ""
+      uploadedFileCloudinaryUrl: "",
+      videoLink: ""
     };
 
     this.savePostTitle = this.savePostTitle.bind(this);
     this.savePostText = this.savePostText.bind(this);
+    this.saveVideoLink = this.saveVideoLink.bind(this);
     this.makePost = this.makePost.bind(this);
   }
 
@@ -50,13 +52,26 @@ class NewPost extends React.Component {
     });
   }
 
+  savePostTitle(event) {
+    this.setState({ postTitle: event.target.value });
+  }
+
+  savePostText(event) {
+    this.setState({ postText: event.target.value });
+  }
+
+  saveVideoLink(event) {
+    this.setState({ videoLink: event.target.value });
+  }
+
   makePost() {
     axios
       .post("/api/posts", {
         date: this.state.postDate,
         title: this.state.postTitle,
         text: this.state.postText,
-        image: this.state.uploadedFileCloudinaryUrl
+        image: this.state.uploadedFileCloudinaryUrl,
+        video: this.state.videoLink
       })
       .then(response => {
         console.log(response.status);
@@ -65,14 +80,6 @@ class NewPost extends React.Component {
         console.log(error);
       });
     this.props.history.push("/");
-  }
-
-  savePostTitle(event) {
-    this.setState({ postTitle: event.target.value });
-  }
-
-  savePostText(event) {
-    this.setState({ postText: event.target.value });
   }
 
   render() {
@@ -106,11 +113,12 @@ class NewPost extends React.Component {
           <div>
             {this.state.uploadedFileCloudinaryUrl === "" ? null : (
               <div>
-                <p>{this.state.uploadedFile.name}</p>
                 <img src={this.state.uploadedFileCloudinaryUrl} />
               </div>
             )}
           </div>
+          <p>Video URL</p>
+          <input type="text" onChange={this.saveVideoLink} />
           <button onClick={this.makePost}>Post</button>
         </div>
         <div className="bottomBorder" />

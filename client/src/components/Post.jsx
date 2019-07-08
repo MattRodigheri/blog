@@ -1,4 +1,6 @@
 import React from "react";
+import ReactPlayer from "react-player";
+
 // import styles from "./../styles/App.css";
 
 class Post extends React.Component {
@@ -13,6 +15,7 @@ class Post extends React.Component {
         <div>{this.props.post.title}</div>
         <div>{this.props.post.entry}</div>
         <img src={this.props.post.imageURL} />
+        <ReactPlayer url={this.props.post.videoURL} />
       </div>
     );
   }
