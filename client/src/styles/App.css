@@ -1,4 +1,9 @@
 * {
   margin: 0;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
+}
+
+.bolt {
+  height: 300px;
+  float: right;
 }

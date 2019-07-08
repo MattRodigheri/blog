@@ -2,8 +2,12 @@ import React from "react";
 import moment from "moment";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-
+import Dropzone from "react-dropzone";
+import request from "superagent";
 // import styles from "./../styles/Post.css";
+
+const CLOUDINARY_UPLOAD_PRESET = "../../../keys.cloudinaryUploadPreset";
+const CLOUDINARY_UPLOAD_URL = "../../../keys.cloudinaryUploadUrl";
 
 class NewPost extends React.Component {
   constructor(props) {
@@ -12,12 +16,40 @@ class NewPost extends React.Component {
     this.state = {
       postDate: moment().format("MMMM Do YYYY"),
       postTitle: "",
-      postText: ""
+      postText: "",
+      uploadedFileCloudinaryUrl: ""
     };
 
     this.savePostTitle = this.savePostTitle.bind(this);
     this.savePostText = this.savePostText.bind(this);
     this.makePost = this.makePost.bind(this);
+  }
+
+  onImageDrop(files) {
+    this.setState({
+      uploadedFile: files[0]
+    });
+
+    this.handleImageUpload(files[0]);
+  }
+
+  handleImageUpload(file) {
+    let upload = request
+      .post(CLOUDINARY_UPLOAD_URL)
+      .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
+      .field("file", file);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+
+      if (response.body.secure_url !== "") {
+        this.setState({
+          uploadedFileCloudinaryUrl: response.body.secure_url
+        });
+      }
+    });
   }
 
   makePost() {
@@ -52,6 +84,34 @@ class NewPost extends React.Component {
           <input type="textbox" onChange={this.savePostTitle} />
           <p>Entry</p>
           <textarea onChange={this.savePostText} />
+          <p>Image(s)</p>
+          <Dropzone
+            onDrop={this.onImageDrop.bind(this)}
+            accept="image/*"
+            multiple={true}
+          >
+            {({ getRootProps, getInputProps }) => {
+              return (
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  {
+                    <p>
+                      Try dropping some files here, or click to select files to
+                      upload.
+                    </p>
+                  }
+                </div>
+              );
+            }}
+          </Dropzone>
+          <div>
+            {this.state.uploadedFileCloudinaryUrl === "" ? null : (
+              <div>
+                <p>{this.state.uploadedFile.name}</p>
+                <img src={this.state.uploadedFileCloudinaryUrl} />
+              </div>
+            )}
+          </div>
           <button onClick={this.makePost}>Post</button>
         </div>
         <div className="bottomBorder" />
