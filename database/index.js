@@ -17,9 +17,9 @@ const getPosts = data => {
 
 const addPost = (input, callback) => {
   connection.query(
-    `INSERT INTO posts (date, title, entry) VALUES ('${input.date}', '${
-      input.title
-    }', '${input.text}');`,
+    `INSERT INTO posts (date, title, entry, imageURL) VALUES ('${
+      input.date
+    }', '${input.title}', '${input.text}', '${input.image}');`,
     err => {
       if (err) {
         console.log(err);

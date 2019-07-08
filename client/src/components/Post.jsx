@@ -12,6 +12,7 @@ class Post extends React.Component {
         <div>{this.props.post.date}</div>
         <div>{this.props.post.title}</div>
         <div>{this.props.post.entry}</div>
+        <img src={this.props.post.imageURL} />
       </div>
     );
   }

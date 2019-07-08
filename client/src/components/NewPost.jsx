@@ -4,10 +4,8 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import Dropzone from "react-dropzone";
 import request from "superagent";
+import keys from "../../../keys.js";
 // import styles from "./../styles/Post.css";
-
-const CLOUDINARY_UPLOAD_PRESET = "../../../keys.cloudinaryUploadPreset";
-const CLOUDINARY_UPLOAD_URL = "../../../keys.cloudinaryUploadUrl";
 
 class NewPost extends React.Component {
   constructor(props) {
@@ -35,8 +33,8 @@ class NewPost extends React.Component {
 
   handleImageUpload(file) {
     let upload = request
-      .post(CLOUDINARY_UPLOAD_URL)
-      .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
+      .post(keys.cloudinaryUploadUrl)
+      .field("upload_preset", keys.cloudinaryUploadPreset)
       .field("file", file);
 
     upload.end((err, response) => {
@@ -57,7 +55,8 @@ class NewPost extends React.Component {
       .post("/api/posts", {
         date: this.state.postDate,
         title: this.state.postTitle,
-        text: this.state.postText
+        text: this.state.postText,
+        image: this.state.uploadedFileCloudinaryUrl
       })
       .then(response => {
         console.log(response.status);
@@ -88,7 +87,7 @@ class NewPost extends React.Component {
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
             accept="image/*"
-            multiple={true}
+            multiple={false}
           >
             {({ getRootProps, getInputProps }) => {
               return (
