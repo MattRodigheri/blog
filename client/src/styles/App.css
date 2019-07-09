@@ -1,9 +1,18 @@
 * {
   margin: 0;
-  background-color: #f8f8f8;
 }
 
 .bolt {
-  height: 300px;
+  width: 25%;
   float: right;
+  transform: rotate(20deg);
+  margin-right: 5%;
+  margin-top: -3%;
+}
+
+.logo {
+  clear: both;
+  display: block;
+  margin: auto;
+  height: 20em;
 }

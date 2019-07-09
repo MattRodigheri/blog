@@ -1,7 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
-
-// import styles from "./../styles/App.css";
+import styles from "./../styles/Post.css";
 
 class Post extends React.Component {
   constructor() {
@@ -14,10 +13,10 @@ class Post extends React.Component {
       video = <ReactPlayer url={this.props.post.videoURL} />;
     }
     return (
-      <div id={this.props.post.id}>
-        <div>{this.props.post.date}</div>
-        <div>{this.props.post.title}</div>
-        <div>{this.props.post.entry}</div>
+      <div className="post" id={this.props.post.id}>
+        <h3>{this.props.post.date}</h3>
+        <h2>{this.props.post.title}</h2>
+        <p>{this.props.post.entry}</p>
         <img src={this.props.post.imageURL} />
         {video}
       </div>

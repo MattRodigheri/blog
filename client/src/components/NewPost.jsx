@@ -12,7 +12,7 @@ class NewPost extends React.Component {
     super(props);
 
     this.state = {
-      postDate: moment().format("MMMM Do YYYY"),
+      postDate: moment().format("MMMM Do, YYYY"),
       postTitle: "",
       postText: "",
       uploadedFileCloudinaryUrl: "",

@@ -1,0 +1,13 @@
+.post {
+  margin: 3em auto;
+  padding: 3%;
+  width: 50%;
+  background-color: #fff;
+}
+
+.post img {
+  width: 100%;
+}
+
+h3 {
+}

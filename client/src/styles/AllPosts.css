@@ -1,0 +1,30 @@
+.allPosts {
+  background-color: #fff;
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  background-image: linear-gradient(
+      45deg,
+      black 25%,
+      transparent 25%,
+      transparent 75%,
+      black 75%,
+      black
+    ),
+    linear-gradient(
+      45deg,
+      black 25%,
+      transparent 25%,
+      transparent 75%,
+      black 75%,
+      black
+    );
+}
+
+.postContainer {
+  padding-top: 20em;
+}
+
+footer {
+  height: 4em;
+  background-color: #99fc20;
+}

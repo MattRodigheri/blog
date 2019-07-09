@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import styles from "./../styles/App.css";
 import Post from "./Post.jsx";
+import styles from "./../styles/AllPosts.css";
 
 class AllPosts extends React.Component {
   constructor() {
@@ -16,7 +16,6 @@ class AllPosts extends React.Component {
     axios
       .get("/api/posts")
       .then(response => {
-        console.log(response.data);
         this.setState({
           posts: response.data
         });
@@ -30,7 +29,12 @@ class AllPosts extends React.Component {
     const posts = this.state.posts.map(post => {
       return <Post key={post.id} post={post} />;
     });
-    return <div>{posts}</div>;
+    return (
+      <div className="allPosts">
+        <div className="postContainer">{posts}</div>
+        <footer />
+      </div>
+    );
   }
 }
 

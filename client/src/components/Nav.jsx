@@ -3,12 +3,10 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch,
   withRouter
 } from "react-router-dom";
 import styles from "./../styles/Nav.css";
 import AllPosts from "./AllPosts.jsx";
-// import NewPost from "./NewPost.jsx";
 import auth0Client from "./Auth.jsx";
 
 const Nav = props => {
@@ -18,16 +16,21 @@ const Nav = props => {
   };
 
   return (
-    // <Router>
     <div className="navbar">
-      <Link to="/">Home</Link>
       {!auth0Client.isAuthenticated() && (
         <button onClick={auth0Client.signIn}>Sign In</button>
       )}
+      <Link className="navLink" to="/">
+        Home
+      </Link>
       {auth0Client.isAuthenticated() && (
-        <div>
-          <Link to="/newpost">New Post</Link>
-          <Link to="/editposts">Edit Posts</Link>
+        <div className="loggedIn">
+          <Link className="navLink" to="/newpost">
+            New Post
+          </Link>
+          <Link className="navLink" to="/editposts">
+            Edit Posts
+          </Link>
           <button
             onClick={() => {
               signOut();

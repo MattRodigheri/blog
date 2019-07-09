@@ -7,7 +7,8 @@ import SecuredRouteEdit from "./SecuredRouteEdit.jsx";
 import NewPost from "./NewPost.jsx";
 import EditPosts from "./EditPosts.jsx";
 import styles from "./../styles/App.css";
-// import bolt from "../../../assets/bolt.gif";
+import bolt from "../../../assets/bolt.gif";
+import logo from "../../../assets/logo.gif";
 
 class App extends React.Component {
   constructor() {
@@ -17,13 +18,14 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <main>
           {/* <img className="bolt" src={bolt} /> */}
           <Nav />
+          <img className="logo" src={logo} />
           <Route exact path="/callback" component={Callback} />
           <SecuredRouteNew path="/newpost" component={NewPost} />
           <SecuredRouteEdit path="/editposts" component={EditPosts} />
-        </div>
+        </main>
       </Router>
     );
   }
