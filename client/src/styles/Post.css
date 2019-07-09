@@ -3,6 +3,8 @@
   padding: 3%;
   width: 50%;
   background-color: #fff;
+  border: 5px solid #fd1999;
+  border-radius: 5px;
 }
 
 .post img {
@@ -10,4 +12,16 @@
 }
 
 h3 {
+  font-family: Streamster;
+  color: #00e6fe;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-family: "Comic Sans MS";
+  color: #a10eec;
+}
+
+p {
+  font-family: "Comic Sans MS";
 }

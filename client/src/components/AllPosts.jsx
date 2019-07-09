@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post.jsx";
+import bolt from "../../../assets/bolt.gif";
+import logo from "../../../assets/logo.gif";
 import styles from "./../styles/AllPosts.css";
 
 class AllPosts extends React.Component {
@@ -31,7 +33,12 @@ class AllPosts extends React.Component {
     });
     return (
       <div className="allPosts">
-        <div className="postContainer">{posts}</div>
+        <div className="logoContainer">
+          <img className="boltL" src={bolt} />
+          <img className="logo" src={logo} />
+          <img className="boltR" src={bolt} />
+        </div>
+        <div>{posts}</div>
         <footer />
       </div>
     );

@@ -1,18 +1,3 @@
 * {
   margin: 0;
 }
-
-.bolt {
-  width: 25%;
-  float: right;
-  transform: rotate(20deg);
-  margin-right: 5%;
-  margin-top: -3%;
-}
-
-.logo {
-  clear: both;
-  display: block;
-  margin: auto;
-  height: 20em;
-}

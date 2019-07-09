@@ -5,14 +5,14 @@ import { withRouter } from "react-router-dom";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 import keys from "../../../keys.js";
-// import styles from "./../styles/Post.css";
+import styles from "./../styles/NewPost.css";
 
 class NewPost extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      postDate: moment().format("MMMM Do, YYYY"),
+      postDate: moment().format("D/M/YY"),
       postTitle: "",
       postText: "",
       uploadedFileCloudinaryUrl: "",
@@ -84,13 +84,13 @@ class NewPost extends React.Component {
 
   render() {
     return (
-      <div className="post">
+      <div className="newPost">
         <div className="formContainer">
           <p>Title</p>
           <input type="textbox" onChange={this.savePostTitle} />
           <p>Entry</p>
           <textarea onChange={this.savePostText} />
-          <p>Image(s)</p>
+          <p>Images</p>
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
             accept="image/*"
@@ -100,12 +100,7 @@ class NewPost extends React.Component {
               return (
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  {
-                    <p>
-                      Try dropping some files here, or click to select files to
-                      upload.
-                    </p>
-                  }
+                  {<p>Drop Files Here</p>}
                 </div>
               );
             }}
@@ -121,7 +116,6 @@ class NewPost extends React.Component {
           <input type="text" onChange={this.saveVideoLink} />
           <button onClick={this.makePost}>Post</button>
         </div>
-        <div className="bottomBorder" />
       </div>
     );
   }

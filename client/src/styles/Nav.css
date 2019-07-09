@@ -1,7 +1,7 @@
 .navbar {
   height: 4em;
   background-color: #a10eec;
-  /* background-color: #fff; */
+  position: fixed;
 }
 
 .loggedIn {
@@ -33,6 +33,7 @@
   cursor: pointer;
   font-size: 2em;
   float: right;
+  margin-right: 1em;
 }
 
 button:focus {

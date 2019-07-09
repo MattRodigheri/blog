@@ -20,8 +20,27 @@
     );
 }
 
-.postContainer {
-  padding-top: 20em;
+.logoContainer {
+  clear: both;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  height: 20em;
+  margin: 2em auto 0 auto;
+}
+
+.boltL {
+  width: 15em;
+  transform: scaleX(-1) rotate(20deg);
+  margin-right: 5%;
+}
+
+.boltR {
+  width: 15em;
+  transform: rotate(20deg);
+  margin-left: 5%;
 }
 
 footer {
