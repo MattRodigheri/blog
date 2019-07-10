@@ -12,7 +12,7 @@ class NewPost extends React.Component {
     super(props);
 
     this.state = {
-      postDate: moment().format("D/M/YY"),
+      postDate: moment().format("M/D/YY"),
       postTitle: "",
       postText: "",
       uploadedFileCloudinaryUrl: "",
@@ -53,11 +53,11 @@ class NewPost extends React.Component {
   }
 
   savePostTitle(event) {
-    this.setState({ postTitle: event.target.value });
+    this.setState({ postTitle: event.target.value.replace(/'/g, "\\'") });
   }
 
   savePostText(event) {
-    this.setState({ postText: event.target.value });
+    this.setState({ postText: event.target.value.replace(/'/g, "\\'") });
   }
 
   saveVideoLink(event) {

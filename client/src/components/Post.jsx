@@ -10,7 +10,14 @@ class Post extends React.Component {
   render() {
     let video;
     if (this.props.post.videoURL !== "") {
-      video = <ReactPlayer url={this.props.post.videoURL} />;
+      video = (
+        <ReactPlayer
+          className="video"
+          width="100%"
+          url={this.props.post.videoURL}
+          controls={true}
+        />
+      );
     }
     return (
       <div className="post" id={this.props.post.id}>

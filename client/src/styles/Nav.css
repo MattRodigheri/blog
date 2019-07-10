@@ -1,7 +1,7 @@
 .navbar {
   height: 4em;
   background-color: #a10eec;
-  position: fixed;
+  width: 100%;
 }
 
 .loggedIn {

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post.jsx";
-import bolt from "../../../assets/bolt.gif";
+import bolt from "../../../assets/pizzabolt.png";
 import logo from "../../../assets/logo.gif";
 import styles from "./../styles/AllPosts.css";
 
