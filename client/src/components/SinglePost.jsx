@@ -1,6 +1,5 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import { Link } from "react-router-dom";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -15,34 +14,31 @@ import {
 } from "react-share";
 import styles from "./../styles/Post.css";
 
-const Post = props => {
+const SinglePost = props => {
+  console.log(props);
+
+  // const props.location.postInfo =
+
   let video;
-  if (props.post.videoURL !== "") {
+  if (props.location.postInfo.videoURL !== "") {
     video = (
       <ReactPlayer
         className="video"
         width="100%"
-        url={props.post.videoURL}
+        url={props.location.postInfo.videoURL}
         controls={true}
       />
     );
   }
-
   return (
-    <div className="post" id={props.post.id}>
-      <h3>{props.post.date}</h3>
-      <Link
-        to={{
-          pathname: `/post/${props.post.id}`,
-          postInfo: props.post
-        }}
-      >
-        <h2>{props.post.title}</h2>
-      </Link>
-      <p>{props.post.entry}</p>
-      <img src={props.post.imageURL} />
+    <div className="post" id={props.location.postInfo.id}>
+      <h3>{props.location.postInfo.date}</h3>
+      <h2>{props.location.postInfo.title}</h2>
+      <p>{props.location.postInfo.entry}</p>
+      <img src={props.location.postInfo.imageURL} />
       {video}
       <div className="sharebtnContainer">
+        {/* TODO: add comments section */}
         <FacebookShareButton className="sharebtn" url={window.location.href}>
           <FacebookIcon size={24} round={true} />
         </FacebookShareButton>
@@ -63,4 +59,4 @@ const Post = props => {
   );
 };
 
-export default Post;
+export default SinglePost;

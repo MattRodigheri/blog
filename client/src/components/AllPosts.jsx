@@ -31,6 +31,7 @@ class AllPosts extends React.Component {
     const posts = this.state.posts.map(post => {
       return <Post key={post.id} post={post} />;
     });
+
     return (
       <div className="allPosts">
         <div className="logoContainer">

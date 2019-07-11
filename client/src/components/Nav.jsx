@@ -40,7 +40,7 @@ const Nav = props => {
           </button>
         </div>
       )}
-      <Route exact path="/" component={AllPosts} />
+      {/* <Route exact path="/" component={AllPosts} /> */}
     </div>
   );
 };
