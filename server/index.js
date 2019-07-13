@@ -7,8 +7,19 @@ const jwksRsa = require("jwks-rsa");
 const keys = require("../keys.js");
 
 app.use(express.static(__dirname + "/../client/dist"));
-app.get("/posts", function(req, res) {
+
+app.get("/posts", (req, res) => {
   controllers.getPosts((err, data) => {
+    if (err) {
+      res.status(503).send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+app.get("/post", (req, res) => {
+  controllers.getSinglePost(req.query.id, (err, data) => {
     if (err) {
       res.status(503).send(err);
     } else {

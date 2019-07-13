@@ -31,12 +31,7 @@ const Post = props => {
   return (
     <div className="post" id={props.post.id}>
       <h3>{props.post.date}</h3>
-      <Link
-        to={{
-          pathname: `/post/${props.post.id}`,
-          postInfo: props.post
-        }}
-      >
+      <Link to={`/post/${props.post.id}`}>
         <h2>{props.post.title}</h2>
       </Link>
       <p>{props.post.entry}</p>

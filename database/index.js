@@ -15,6 +15,16 @@ const getPosts = data => {
   });
 };
 
+const getSinglePost = (input, data) => {
+  connection.query(`SELECT * FROM posts WHERE id=${input}`, (err, res) => {
+    if (err) {
+      data(err, null);
+    } else {
+      data(null, res);
+    }
+  });
+};
+
 const addPost = (input, callback) => {
   connection.query(
     `INSERT INTO posts (date, title, entry, imageURL, videoURL) VALUES ('${
@@ -43,5 +53,6 @@ const deletePost = (input, callback) => {
 };
 
 module.exports.getPosts = getPosts;
+module.exports.getSinglePost = getSinglePost;
 module.exports.addPost = addPost;
 module.exports.deletePost = deletePost;

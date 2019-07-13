@@ -1,5 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import axios from "axios";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -12,51 +13,76 @@ import {
   EmailShareButton,
   EmailIcon
 } from "react-share";
-import styles from "./../styles/Post.css";
+import styles from "./../styles/SinglePost.css";
 
-const SinglePost = props => {
-  console.log(props);
+class SinglePost extends React.Component {
+  constructor() {
+    super();
 
-  // const props.location.postInfo =
+    this.state = {
+      postData: {}
+    };
+  }
 
-  let video;
-  if (props.location.postInfo.videoURL !== "") {
-    video = (
-      <ReactPlayer
-        className="video"
-        width="100%"
-        url={props.location.postInfo.videoURL}
-        controls={true}
-      />
+  componentDidMount() {
+    axios
+      .get("/api/post", { params: { id: this.props.match.params.postId } })
+      .then(response => {
+        this.setState({
+          postData: response.data[0]
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  render() {
+    let video;
+    if (this.state.postData.videoURL !== "") {
+      video = (
+        <ReactPlayer
+          className="video"
+          width="100%"
+          url={this.state.postData.videoURL}
+          controls={true}
+        />
+      );
+    }
+    return (
+      <div className="postBackground">
+        <div className="spacer" />
+        <div className="post">
+          <h3>{this.state.postData.date}</h3>
+          <h2>{this.state.postData.title}</h2>
+          <p>{this.state.postData.entry}</p>
+          <img src={this.state.postData.imageURL} />
+          {video}
+          <div className="sharebtnContainer">
+            {/* TODO: add comments section */}
+            <FacebookShareButton
+              className="sharebtn"
+              url={window.location.href}
+            >
+              <FacebookIcon size={24} round={true} />
+            </FacebookShareButton>
+            <TwitterShareButton className="sharebtn" url={window.location.href}>
+              <TwitterIcon size={24} round={true} />
+            </TwitterShareButton>
+            <RedditShareButton className="sharebtn" url={window.location.href}>
+              <RedditIcon size={24} round={true} />
+            </RedditShareButton>
+            <TumblrShareButton className="sharebtn" url={window.location.href}>
+              <TumblrIcon size={24} round={true} />
+            </TumblrShareButton>
+            <EmailShareButton className="sharebtn" url={window.location.href}>
+              <EmailIcon size={24} round={true} />
+            </EmailShareButton>
+          </div>
+        </div>
+      </div>
     );
   }
-  return (
-    <div className="post" id={props.location.postInfo.id}>
-      <h3>{props.location.postInfo.date}</h3>
-      <h2>{props.location.postInfo.title}</h2>
-      <p>{props.location.postInfo.entry}</p>
-      <img src={props.location.postInfo.imageURL} />
-      {video}
-      <div className="sharebtnContainer">
-        {/* TODO: add comments section */}
-        <FacebookShareButton className="sharebtn" url={window.location.href}>
-          <FacebookIcon size={24} round={true} />
-        </FacebookShareButton>
-        <TwitterShareButton className="sharebtn" url={window.location.href}>
-          <TwitterIcon size={24} round={true} />
-        </TwitterShareButton>
-        <RedditShareButton className="sharebtn" url={window.location.href}>
-          <RedditIcon size={24} round={true} />
-        </RedditShareButton>
-        <TumblrShareButton className="sharebtn" url={window.location.href}>
-          <TumblrIcon size={24} round={true} />
-        </TumblrShareButton>
-        <EmailShareButton className="sharebtn" url={window.location.href}>
-          <EmailIcon size={24} round={true} />
-        </EmailShareButton>
-      </div>
-    </div>
-  );
-};
+}
 
 export default SinglePost;
