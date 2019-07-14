@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  withRouter
-} from "react-router-dom";
+import { BrowserRouter as Router, Link, withRouter } from "react-router-dom";
 import styles from "./../styles/Nav.css";
 import AllPosts from "./AllPosts.jsx";
 import auth0Client from "./Auth.jsx";

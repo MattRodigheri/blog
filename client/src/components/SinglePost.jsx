@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import ReactPlayer from "react-player";
 import axios from "axios";
 import {
@@ -25,6 +26,8 @@ class SinglePost extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     axios
       .get("/api/post", { params: { id: this.props.match.params.postId } })
       .then(response => {
@@ -85,4 +88,5 @@ class SinglePost extends React.Component {
   }
 }
 
+// export default withRouter(SinglePost);
 export default SinglePost;

@@ -21,7 +21,7 @@ class App extends React.Component {
         <main>
           <Nav />
           <Route exact path="/" component={AllPosts} />
-          <Route exact path="/post/:postId" component={SinglePost} />
+          <Route exact path="/:postId" component={SinglePost} />
           <Route exact path="/callback" component={Callback} />
           <SecuredRouteNew path="/newpost" component={NewPost} />
           <SecuredRouteEdit path="/editposts" component={EditPosts} />
