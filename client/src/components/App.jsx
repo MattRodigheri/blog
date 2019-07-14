@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./Nav.jsx";
 import Callback from "./Callback.jsx";
 import SecuredRouteNew from "./SecuredRouteNew.jsx";
@@ -20,11 +20,13 @@ class App extends React.Component {
       <Router>
         <main>
           <Nav />
-          <Route exact path="/" component={AllPosts} />
-          <Route exact path="/:postId" component={SinglePost} />
-          <Route exact path="/callback" component={Callback} />
-          <SecuredRouteNew path="/newpost" component={NewPost} />
-          <SecuredRouteEdit path="/editposts" component={EditPosts} />
+          <Switch>
+            <Route exact path="/" component={AllPosts} />
+            <Route exact path="/callback" component={Callback} />
+            <SecuredRouteNew path="/newpost" component={NewPost} />
+            <SecuredRouteEdit path="/editposts" component={EditPosts} />
+            <Route exact path="/:postId" component={SinglePost} />
+          </Switch>
         </main>
       </Router>
     );

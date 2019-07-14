@@ -88,5 +88,4 @@ class SinglePost extends React.Component {
   }
 }
 
-// export default withRouter(SinglePost);
 export default SinglePost;

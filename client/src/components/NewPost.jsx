@@ -27,10 +27,12 @@ class NewPost extends React.Component {
 
   onImageDrop(files) {
     this.setState({
-      uploadedFile: files[0]
+      uploadedFile: files
+      // uploadedFile: files[0]
     });
 
-    this.handleImageUpload(files[0]);
+    // this.handleImageUpload(files[0]);
+    this.handleImageUpload(files);
   }
 
   handleImageUpload(file) {
@@ -94,7 +96,8 @@ class NewPost extends React.Component {
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
             accept="image/*"
-            multiple={false}
+            // multiple={false}
+            multiple={true}
           >
             {({ getRootProps, getInputProps }) => {
               return (
