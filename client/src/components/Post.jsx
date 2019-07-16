@@ -38,6 +38,8 @@ const Post = props => {
       <img src={props.post.imageURL} />
       {video}
       <div className="sharebtnContainer">
+        {/* TODO: fix single post share links */}
+
         <FacebookShareButton className="sharebtn" url={window.location.href}>
           <FacebookIcon size={24} round={true} />
         </FacebookShareButton>

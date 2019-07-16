@@ -1,7 +1,8 @@
 .post {
   margin: 3em auto;
-  padding: 3% 3% 0 3%;
-  width: 50%;
+  line-height: 3em;
+  padding: 0 3%;
+  width: 40%;
   background-color: #fff;
   border: 5px solid #fd1999;
   border-radius: 5px;
@@ -18,7 +19,7 @@
 h3 {
   font-family: Streamster;
   color: #00e6fe;
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 
 h2 {
@@ -35,7 +36,7 @@ p {
 }
 
 .sharebtnContainer {
-  margin-left: 108%;
+  margin-left: 109%;
 }
 
 .sharebtn {

@@ -40,7 +40,6 @@ class AllPosts extends React.Component {
           <img className="boltR" src={bolt} />
         </div>
         <div>{posts}</div>
-        {/* <footer /> */}
       </div>
     );
   }
