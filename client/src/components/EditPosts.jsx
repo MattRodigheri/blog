@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import styles from "./../styles/App.css";
 import Post from "./Post.jsx";
+import styles from "./../styles/EditPosts.css";
 
 class EditPosts extends React.Component {
   constructor() {
@@ -47,9 +47,9 @@ class EditPosts extends React.Component {
   render() {
     const posts = this.state.posts.map((post, index) => {
       return (
-        <div key={index}>
-          <Post post={post} />
+        <div className="editPosts" key={index}>
           <button onClick={event => this.deletePost(event)}>Delete</button>
+          <Post post={post} />
         </div>
       );
     });

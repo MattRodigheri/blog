@@ -6,6 +6,7 @@ import Dropzone from "react-dropzone";
 import request from "superagent";
 import keys from "../../../keys.js";
 import styles from "./../styles/NewPost.css";
+import imageIcon from "../../../assets/imageIcon.png";
 
 class NewPost extends React.Component {
   constructor(props) {
@@ -85,14 +86,16 @@ class NewPost extends React.Component {
   }
 
   render() {
+    // TODO: allow multiple images
+    // TODO: allow multiple videos
     return (
       <div className="newPost">
         <div className="formContainer">
-          <p>Title</p>
-          <input type="textbox" onChange={this.savePostTitle} />
-          <p>Entry</p>
+          <h2>Title</h2>
+          <input type="text" onChange={this.savePostTitle} />
+          <h2>Entry</h2>
           <textarea onChange={this.savePostText} />
-          <p>Images</p>
+          <h2>Images</h2>
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
             accept="image/*"
@@ -101,9 +104,9 @@ class NewPost extends React.Component {
           >
             {({ getRootProps, getInputProps }) => {
               return (
-                <div {...getRootProps()}>
+                <div className="dropzone" {...getRootProps()}>
                   <input {...getInputProps()} />
-                  {<p>Drop Files Here</p>}
+                  {<img src={imageIcon} />}
                 </div>
               );
             }}
@@ -115,7 +118,7 @@ class NewPost extends React.Component {
               </div>
             )}
           </div>
-          <p>Video URL</p>
+          <h2>Video URL</h2>
           <input type="text" onChange={this.saveVideoLink} />
           <button onClick={this.makePost}>Post</button>
         </div>
