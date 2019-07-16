@@ -1,6 +1,6 @@
 .newPost {
-  margin: 3em auto;
-  padding: 3%;
+  margin: 3em auto 0 auto;
+  padding: 3% 3% 0 3%;
   width: 50%;
   background-color: #fff;
   border: 5px solid #fd1999;
@@ -11,3 +11,9 @@
   display: block;
   float: right;
 }
+
+/* .flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */

@@ -26,8 +26,6 @@ class SinglePost extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
-
     axios
       .get("/api/post", { params: { id: this.props.match.params.postId } })
       .then(response => {
@@ -53,35 +51,29 @@ class SinglePost extends React.Component {
       );
     }
     return (
-      <div className="postBackground">
-        <div className="spacer" />
-        <div className="post">
-          <h3>{this.state.postData.date}</h3>
-          <h2>{this.state.postData.title}</h2>
-          <p>{this.state.postData.entry}</p>
-          <img src={this.state.postData.imageURL} />
-          {video}
-          <div className="sharebtnContainer">
-            {/* TODO: add comments section */}
-            <FacebookShareButton
-              className="sharebtn"
-              url={window.location.href}
-            >
-              <FacebookIcon size={24} round={true} />
-            </FacebookShareButton>
-            <TwitterShareButton className="sharebtn" url={window.location.href}>
-              <TwitterIcon size={24} round={true} />
-            </TwitterShareButton>
-            <RedditShareButton className="sharebtn" url={window.location.href}>
-              <RedditIcon size={24} round={true} />
-            </RedditShareButton>
-            <TumblrShareButton className="sharebtn" url={window.location.href}>
-              <TumblrIcon size={24} round={true} />
-            </TumblrShareButton>
-            <EmailShareButton className="sharebtn" url={window.location.href}>
-              <EmailIcon size={24} round={true} />
-            </EmailShareButton>
-          </div>
+      <div className="post">
+        <h3>{this.state.postData.date}</h3>
+        <h2>{this.state.postData.title}</h2>
+        <p>{this.state.postData.entry}</p>
+        <img src={this.state.postData.imageURL} />
+        {video}
+        <div className="sharebtnContainer">
+          {/* TODO: add comments section */}
+          <FacebookShareButton className="sharebtn" url={window.location.href}>
+            <FacebookIcon size={24} round={true} />
+          </FacebookShareButton>
+          <TwitterShareButton className="sharebtn" url={window.location.href}>
+            <TwitterIcon size={24} round={true} />
+          </TwitterShareButton>
+          <RedditShareButton className="sharebtn" url={window.location.href}>
+            <RedditIcon size={24} round={true} />
+          </RedditShareButton>
+          <TumblrShareButton className="sharebtn" url={window.location.href}>
+            <TumblrIcon size={24} round={true} />
+          </TumblrShareButton>
+          <EmailShareButton className="sharebtn" url={window.location.href}>
+            <EmailIcon size={24} round={true} />
+          </EmailShareButton>
         </div>
       </div>
     );

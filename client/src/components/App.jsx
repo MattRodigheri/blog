@@ -17,18 +17,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <main>
-          <Nav />
-          <Switch>
-            <Route exact path="/" component={AllPosts} />
-            <Route exact path="/callback" component={Callback} />
-            <SecuredRouteNew path="/newpost" component={NewPost} />
-            <SecuredRouteEdit path="/editposts" component={EditPosts} />
-            <Route exact path="/:postId" component={SinglePost} />
-          </Switch>
-        </main>
-      </Router>
+      <div id="page-container">
+        <div id="content-wrap">
+          <Router>
+            <Nav />
+            <Switch>
+              <Route exact path="/" component={AllPosts} />
+              <Route exact path="/callback" component={Callback} />
+              <SecuredRouteNew path="/newpost" component={NewPost} />
+              <SecuredRouteEdit path="/editposts" component={EditPosts} />
+              <Route exact path="/:postId" component={SinglePost} />
+            </Switch>
+          </Router>
+        </div>
+        <footer />
+      </div>
     );
   }
 }
