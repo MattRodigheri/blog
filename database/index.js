@@ -42,7 +42,7 @@ const addPost = (input, callback) => {
 };
 
 const deletePost = (input, callback) => {
-  console.log(input.id);
+  // console.log("inputID: ", input.id);
   connection.query(`DELETE FROM posts WHERE id = ${input.id};`),
     err => {
       if (err) {

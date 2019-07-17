@@ -1,7 +1,7 @@
 .post {
   margin: 3em auto;
   line-height: 3em;
-  padding: 0 3%;
+  padding: 3% 3%;
   width: 40%;
   background-color: #fff;
   border: 5px solid #fd1999;
@@ -16,10 +16,11 @@
   width: 100%;
 }
 
-h3 {
+h5 {
   font-family: Streamster;
   color: #00e6fe;
-  margin: 1em 0;
+  margin-top: -2em;
+  float: right;
 }
 
 h2 {

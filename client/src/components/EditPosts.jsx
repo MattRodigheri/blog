@@ -26,8 +26,9 @@ class EditPosts extends React.Component {
   }
 
   deletePost(event) {
+    // console.log(event.target.nextSibling.id);
     axios.delete("/api/posts", {
-      data: { id: event.target.previousSibling.id }
+      data: { id: event.target.nextSibling.id }
     }).then;
     axios
       .get("/api/posts")

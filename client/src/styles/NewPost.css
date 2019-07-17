@@ -62,6 +62,10 @@ textarea {
   margin: 0.5em auto;
 }
 
+.uploadSample {
+  width: 100%;
+}
+
 .newPost button {
   display: block;
   margin: 1em 0 1em 80%;

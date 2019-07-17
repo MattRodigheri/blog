@@ -70,8 +70,8 @@ class SinglePost extends React.Component {
             <EmailIcon size={24} round={true} />
           </EmailShareButton>
         </div>
-        <div>
-          <h3>{this.state.postData.date}</h3>
+        <div className="singlePost">
+          <h5>{this.state.postData.date}</h5>
           <h2>{this.state.postData.title}</h2>
           <p>{this.state.postData.entry}</p>
           <img src={this.state.postData.imageURL} />

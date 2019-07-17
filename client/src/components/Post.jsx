@@ -29,35 +29,18 @@ const Post = props => {
   }
 
   return (
-    <div>
-      <div className="post" id={props.post.id}>
-        <h3>{props.post.date}</h3>
-        <Link to={`/${props.post.id}`}>
-          <h2>{props.post.title}</h2>
-        </Link>
-        <p>{props.post.entry}</p>
-        <img src={props.post.imageURL} />
-        {video}
-      </div>
-      {/* <div className="sharebtnContainer">
-
-        <FacebookShareButton className="sharebtn" url={window.location.href}>
-          <FacebookIcon size={24} round={true} />
-        </FacebookShareButton>
-        <TwitterShareButton className="sharebtn" url={window.location.href}>
-          <TwitterIcon size={24} round={true} />
-        </TwitterShareButton>
-        <RedditShareButton className="sharebtn" url={window.location.href}>
-          <RedditIcon size={24} round={true} />
-        </RedditShareButton>
-        <TumblrShareButton className="sharebtn" url={window.location.href}>
-          <TumblrIcon size={24} round={true} />
-        </TumblrShareButton>
-        <EmailShareButton className="sharebtn" url={window.location.href}>
-          <EmailIcon size={24} round={true} />
-        </EmailShareButton>
-      </div> */}
+    // <div>
+    <div className="post" id={props.post.id}>
+      <h5>{props.post.date}</h5>
+      <Link to={`/${props.post.id}`}>
+        <h2>{props.post.title}</h2>
+      </Link>
+      <p>{props.post.entry}</p>
+      <img src={props.post.imageURL} />
+      {video}
     </div>
+
+    // </div>
   );
 };
 

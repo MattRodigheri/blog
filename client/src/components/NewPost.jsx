@@ -68,21 +68,25 @@ class NewPost extends React.Component {
   }
 
   makePost() {
-    axios
-      .post("/api/posts", {
-        date: this.state.postDate,
-        title: this.state.postTitle,
-        text: this.state.postText,
-        image: this.state.uploadedFileCloudinaryUrl,
-        video: this.state.videoLink
-      })
-      .then(response => {
-        console.log(response.status);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    this.props.history.push("/");
+    if (this.state.postTitle === "") {
+      alert("A title is required");
+    } else {
+      axios
+        .post("/api/posts", {
+          date: this.state.postDate,
+          title: this.state.postTitle,
+          text: this.state.postText,
+          image: this.state.uploadedFileCloudinaryUrl,
+          video: this.state.videoLink
+        })
+        .then(response => {
+          console.log(response.status);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      this.props.history.push("/");
+    }
   }
 
   render() {
@@ -114,7 +118,10 @@ class NewPost extends React.Component {
           <div>
             {this.state.uploadedFileCloudinaryUrl === "" ? null : (
               <div>
-                <img src={this.state.uploadedFileCloudinaryUrl} />
+                <img
+                  className="uploadSample"
+                  src={this.state.uploadedFileCloudinaryUrl}
+                />
               </div>
             )}
           </div>
