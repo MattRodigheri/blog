@@ -29,16 +29,17 @@ const Post = props => {
   }
 
   return (
-    <div className="post" id={props.post.id}>
-      <h3>{props.post.date}</h3>
-      <Link to={`/${props.post.id}`}>
-        <h2>{props.post.title}</h2>
-      </Link>
-      <p>{props.post.entry}</p>
-      <img src={props.post.imageURL} />
-      {video}
-      <div className="sharebtnContainer">
-        {/* TODO: fix single post share links */}
+    <div>
+      <div className="post" id={props.post.id}>
+        <h3>{props.post.date}</h3>
+        <Link to={`/${props.post.id}`}>
+          <h2>{props.post.title}</h2>
+        </Link>
+        <p>{props.post.entry}</p>
+        <img src={props.post.imageURL} />
+        {video}
+      </div>
+      {/* <div className="sharebtnContainer">
 
         <FacebookShareButton className="sharebtn" url={window.location.href}>
           <FacebookIcon size={24} round={true} />
@@ -55,7 +56,7 @@ const Post = props => {
         <EmailShareButton className="sharebtn" url={window.location.href}>
           <EmailIcon size={24} round={true} />
         </EmailShareButton>
-      </div>
+      </div> */}
     </div>
   );
 };

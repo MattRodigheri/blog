@@ -34,15 +34,3 @@ a {
 p {
   font-family: "Comic Sans MS";
 }
-
-.sharebtnContainer {
-  margin-left: 109%;
-}
-
-.sharebtn {
-  margin-top: 1em;
-}
-
-.sharebtn:focus {
-  outline: 0;
-}

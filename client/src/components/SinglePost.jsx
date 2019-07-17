@@ -51,12 +51,7 @@ class SinglePost extends React.Component {
       );
     }
     return (
-      <div className="post">
-        <h3>{this.state.postData.date}</h3>
-        <h2>{this.state.postData.title}</h2>
-        <p>{this.state.postData.entry}</p>
-        <img src={this.state.postData.imageURL} />
-        {video}
+      <div className="postContainer">
         <div className="sharebtnContainer">
           {/* TODO: add comments section */}
           <FacebookShareButton className="sharebtn" url={window.location.href}>
@@ -74,6 +69,13 @@ class SinglePost extends React.Component {
           <EmailShareButton className="sharebtn" url={window.location.href}>
             <EmailIcon size={24} round={true} />
           </EmailShareButton>
+        </div>
+        <div>
+          <h3>{this.state.postData.date}</h3>
+          <h2>{this.state.postData.title}</h2>
+          <p>{this.state.postData.entry}</p>
+          <img src={this.state.postData.imageURL} />
+          {video}
         </div>
       </div>
     );
