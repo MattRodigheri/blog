@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import ReactPlayer from "react-player";
 import axios from "axios";
 import {

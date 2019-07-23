@@ -24,12 +24,42 @@ class AllPosts extends React.Component {
       })
       .catch(error => {
         console.log(error);
+        res.status(500).send(error);
+      });
+  }
+
+  deletePost(id) {
+    let remainingPosts = this.state.posts;
+    this.state.posts.forEach((item, index) => {
+      if (item.id === Number(id)) {
+        remainingPosts.splice(index, 1);
+        this.setState({
+          posts: remainingPosts
+        });
+      }
+    });
+
+    axios
+      .delete("/api/posts", {
+        data: { id }
+      })
+      .then(response => {
+        res.status(200).send(response);
+      })
+      .catch(error => {
+        res.status(500).send(error);
       });
   }
 
   render() {
     const posts = this.state.posts.map(post => {
-      return <Post key={post.id} post={post} />;
+      return (
+        <Post
+          key={post.id}
+          post={post}
+          deletePost={() => this.deletePost(post.id)}
+        />
+      );
     });
     return (
       <div className="allPosts">

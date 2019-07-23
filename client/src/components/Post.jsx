@@ -18,32 +18,11 @@ const Post = props => {
     );
   }
 
-  const deletePost = id => {
-    // let test = this.state.posts;
-    // this.state.posts.forEach((item, index) => {
-    //   if (item.id === Number(event.target.nextSibling.id)) {
-    //     test.splice(index, 1);
-    //     this.setState({
-    //       posts: test
-    //     });
-    //   }
-    // });
-    axios
-      .delete("/api/posts", {
-        data: { id }
-      })
-      .then(response => {
-        res.status(200).send(response);
-      })
-      .catch(error => {
-        // console.log(error);
-        res.status(500).send(error);
-      });
-  };
-
   let edit;
   if (auth0Client.isAuthenticated()) {
-    edit = <button onClick={event => deletePost(props.post.id)}>Delete</button>;
+    edit = (
+      <button onClick={() => props.deletePost(props.post.id)}>Delete</button>
+    );
   }
 
   return (
