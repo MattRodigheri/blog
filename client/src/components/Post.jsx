@@ -1,18 +1,8 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  RedditShareButton,
-  RedditIcon,
-  TumblrShareButton,
-  TumblrIcon,
-  EmailShareButton,
-  EmailIcon
-} from "react-share";
+import auth0Client from "./Auth.jsx";
+import axios from "axios";
 import styles from "./../styles/Post.css";
 
 const Post = props => {
@@ -28,9 +18,37 @@ const Post = props => {
     );
   }
 
+  const deletePost = id => {
+    // let test = this.state.posts;
+    // this.state.posts.forEach((item, index) => {
+    //   if (item.id === Number(event.target.nextSibling.id)) {
+    //     test.splice(index, 1);
+    //     this.setState({
+    //       posts: test
+    //     });
+    //   }
+    // });
+    axios
+      .delete("/api/posts", {
+        data: { id }
+      })
+      .then(response => {
+        res.status(200).send(response);
+      })
+      .catch(error => {
+        // console.log(error);
+        res.status(500).send(error);
+      });
+  };
+
+  let edit;
+  if (auth0Client.isAuthenticated()) {
+    edit = <button onClick={event => deletePost(props.post.id)}>Delete</button>;
+  }
+
   return (
-    // <div>
     <div className="post" id={props.post.id}>
+      {edit}
       <h5>{props.post.date}</h5>
       <Link to={`/${props.post.id}`}>
         <h2>{props.post.title}</h2>
@@ -39,8 +57,6 @@ const Post = props => {
       <img src={props.post.imageURL} />
       {video}
     </div>
-
-    // </div>
   );
 };
 
