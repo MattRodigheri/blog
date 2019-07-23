@@ -20,7 +20,7 @@ const App = () => {
             <Route exact path="/" component={AllPosts} />
             <Route exact path="/callback" component={Callback} />
             <SecuredRouteNew path="/newpost" component={NewPost} />
-            <SecuredRouteEdit path="/editpost" component={EditPost} />
+            <SecuredRouteEdit path="/:postId/edit" component={EditPost} />
             {/* <Route path="/editpost" component={EditPost} /> */}
             <Route exact path="/:postId" component={SinglePost} />
           </Switch>

@@ -27,7 +27,6 @@ class EditPost extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     axios
       .get("/api/post", { params: { id: this.props.match.params.postId } })
       .then(response => {
