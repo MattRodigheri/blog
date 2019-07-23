@@ -21,17 +21,12 @@ const Post = props => {
   let edit;
   if (auth0Client.isAuthenticated()) {
     edit = (
-      <div className="deletePost">
-        <button
-          // className="deletePost"
-          onClick={() => props.deletePost(props.post.id)}
-        >
-          Delete
-        </button>
-        <button
-        // className="deletePost"
-        >
-          Edit
+      <div className="editPost">
+        <button onClick={() => props.deletePost(props.post.id)}>Delete</button>
+        <button>
+          <Link className="link" to="/newpost">
+            Edit
+          </Link>
         </button>
       </div>
     );
