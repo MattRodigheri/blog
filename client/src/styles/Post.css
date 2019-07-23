@@ -35,3 +35,23 @@ a {
 p {
   font-family: "Comic Sans MS";
 }
+
+.deletePost {
+  margin: 0 20% 0 0;
+  float: right;
+}
+
+.deletePost button {
+  display: block;
+  margin-bottom: 1em;
+  background-color: #a10eec;
+  border: none;
+  color: white;
+  width: 5em;
+  height: 3em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  font-family: "Comic Sans MS";
+  border-radius: 5px;
+}

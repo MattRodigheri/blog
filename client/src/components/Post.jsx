@@ -21,20 +21,34 @@ const Post = props => {
   let edit;
   if (auth0Client.isAuthenticated()) {
     edit = (
-      <button onClick={() => props.deletePost(props.post.id)}>Delete</button>
+      <div className="deletePost">
+        <button
+          // className="deletePost"
+          onClick={() => props.deletePost(props.post.id)}
+        >
+          Delete
+        </button>
+        <button
+        // className="deletePost"
+        >
+          Edit
+        </button>
+      </div>
     );
   }
 
   return (
-    <div className="post" id={props.post.id}>
+    <div>
       {edit}
-      <h5>{props.post.date}</h5>
-      <Link to={`/${props.post.id}`}>
-        <h2>{props.post.title}</h2>
-      </Link>
-      <p>{props.post.entry}</p>
-      <img src={props.post.imageURL} />
-      {video}
+      <div className="post" id={props.post.id}>
+        <h5>{props.post.date}</h5>
+        <Link to={`/${props.post.id}`}>
+          <h2>{props.post.title}</h2>
+        </Link>
+        <p>{props.post.entry}</p>
+        <img src={props.post.imageURL} />
+        {video}
+      </div>
     </div>
   );
 };
