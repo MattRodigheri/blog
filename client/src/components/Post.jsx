@@ -23,11 +23,10 @@ const Post = props => {
     edit = (
       <div className="editPost">
         <button onClick={() => props.deletePost(props.post.id)}>Delete</button>
-        <button>
-          <Link className="link" to="/newpost">
-            Edit
-          </Link>
-        </button>
+        <Link to={`/editpost`}>
+          {/* <Link to={`/${props.post.id}`}> */}
+          <button>Edit</button>
+        </Link>
       </div>
     );
   }

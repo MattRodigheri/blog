@@ -34,7 +34,6 @@ class SinglePost extends React.Component {
       })
       .catch(error => {
         console.log(error);
-        res.status(500).send(error);
       });
   }
 

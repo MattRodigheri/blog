@@ -8,7 +8,7 @@ class Callback extends Component {
   }
 
   render() {
-    return <p>Access Denied</p>;
+    return <p>Loading</p>;
   }
 }
 
