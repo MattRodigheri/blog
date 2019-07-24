@@ -24,7 +24,6 @@ class AllPosts extends React.Component {
       })
       .catch(error => {
         console.log(error);
-        res.status(500).send(error);
       });
   }
 
@@ -44,10 +43,10 @@ class AllPosts extends React.Component {
         data: { id }
       })
       .then(response => {
-        res.status(200).send(response);
+        console.log(response);
       })
       .catch(error => {
-        res.status(500).send(error);
+        console.log(error);
       });
   }
 

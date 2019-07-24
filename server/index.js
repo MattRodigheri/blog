@@ -49,6 +49,15 @@ app.post("/posts", bodyParser.json(), (req, res) => {
   });
 });
 
+app.put("/posts", bodyParser.json(), (req, res) => {
+  console.log(req);
+  controllers.putPost(req.body, err => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 app.delete("/posts", bodyParser.json(), (req, res) => {
   controllers.deletePost(req.body, err => {
     if (err) {

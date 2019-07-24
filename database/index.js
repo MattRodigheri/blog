@@ -41,6 +41,15 @@ const addPost = (input, callback) => {
   );
 };
 
+const putPost = (input, callback) => {
+  connection.query(``),
+    err => {
+      if (err) {
+        console.log(err);
+      }
+    };
+};
+
 const deletePost = (input, callback) => {
   // console.log("inputID: ", input.id);
   connection.query(`DELETE FROM posts WHERE id = ${input.id};`),
@@ -55,4 +64,5 @@ const deletePost = (input, callback) => {
 module.exports.getPosts = getPosts;
 module.exports.getSinglePost = getSinglePost;
 module.exports.addPost = addPost;
+module.exports.putPost = putPost;
 module.exports.deletePost = deletePost;
