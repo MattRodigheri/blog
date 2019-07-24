@@ -91,11 +91,12 @@ class EditPost extends React.Component {
   putPost() {
     axios
       .put("/api/posts", {
-        date: this.state.postDate,
+        id: this.state.postID,
+        // date: this.state.postDate,
         title: this.state.postTitle,
-        text: this.state.postText,
-        image: this.state.uploadedFileCloudinaryUrl,
-        video: this.state.videoLink
+        entry: this.state.postText,
+        imageURL: this.state.uploadedFileCloudinaryUrl,
+        videoURL: this.state.videoLink
       })
       .then(response => {
         console.log(response.status);

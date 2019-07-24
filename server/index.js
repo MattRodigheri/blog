@@ -50,7 +50,7 @@ app.post("/posts", bodyParser.json(), (req, res) => {
 });
 
 app.put("/posts", bodyParser.json(), (req, res) => {
-  console.log(req);
+  // console.log(req.body);
   controllers.putPost(req.body, err => {
     if (err) {
       res.status(500).send(err);

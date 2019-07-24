@@ -42,7 +42,17 @@ const addPost = (input, callback) => {
 };
 
 const putPost = (input, callback) => {
-  connection.query(``),
+  let query = [];
+  for (item in input) {
+    if (input[item] === "") {
+      delete input[item];
+    } else {
+      query.push(`${item} = '${input[item]}'`);
+    }
+  }
+  connection.query(
+    `UPDATE posts SET ${query.join(", ")} WHERE id = '${input.id}';`
+  ),
     err => {
       if (err) {
         console.log(err);
@@ -51,7 +61,6 @@ const putPost = (input, callback) => {
 };
 
 const deletePost = (input, callback) => {
-  // console.log("inputID: ", input.id);
   connection.query(`DELETE FROM posts WHERE id = ${input.id};`),
     err => {
       if (err) {
