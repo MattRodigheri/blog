@@ -6,6 +6,7 @@ import Dropzone from "react-dropzone";
 import request from "superagent";
 import keys from "../../../keys.js";
 import styles from "./../styles/NewPost.css";
+// import styles from "./../styles/EditPost.css";
 import imageIcon from "../../../assets/imageIcon.png";
 
 class EditPost extends React.Component {
@@ -13,26 +14,32 @@ class EditPost extends React.Component {
     super();
 
     this.state = {
+      postID: 0,
       postDate: moment().format("M/D/YY"),
       postTitle: "",
       postText: "",
-      uploadedFileCloudinaryUrl: "",
-      videoLink: ""
+      imageURL: "",
+      videoLink: "",
+      uploadedFileCloudinaryUrl: ""
     };
 
     this.savePostTitle = this.savePostTitle.bind(this);
     this.savePostText = this.savePostText.bind(this);
     this.saveVideoLink = this.saveVideoLink.bind(this);
-    this.makePost = this.makePost.bind(this);
+    this.putPost = this.putPost.bind(this);
   }
 
   componentDidMount() {
     axios
       .get("/api/post", { params: { id: this.props.match.params.postId } })
       .then(response => {
-        console.log(response.data);
         this.setState({
-          postData: response.data[0]
+          postID: response.data[0].id,
+          postDate: response.data[0].date,
+          postTitle: response.data[0].title,
+          postText: response.data[0].entry,
+          imageURL: response.data[0].imageURL,
+          videoLink: response.data[0].videoURL
         });
       })
       .catch(error => {
@@ -81,38 +88,46 @@ class EditPost extends React.Component {
     this.setState({ videoLink: event.target.value });
   }
 
-  makePost() {
-    if (this.state.postTitle === "") {
-      alert("A title is required");
-    } else {
-      axios
-        .post("/api/posts", {
-          date: this.state.postDate,
-          title: this.state.postTitle,
-          text: this.state.postText,
-          image: this.state.uploadedFileCloudinaryUrl,
-          video: this.state.videoLink
-        })
-        .then(response => {
-          console.log(response.status);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      this.props.history.push("/");
-    }
+  putPost() {
+    axios
+      .put("/api/posts", {
+        date: this.state.postDate,
+        title: this.state.postTitle,
+        text: this.state.postText,
+        image: this.state.uploadedFileCloudinaryUrl,
+        video: this.state.videoLink
+      })
+      .then(response => {
+        console.log(response.status);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    this.props.history.push("/");
   }
 
   render() {
     // TODO: allow multiple images
     // TODO: allow multiple videos
+    let image;
+    if (this.state.uploadedFileCloudinaryUrl !== "") {
+      image = this.state.uploadedFileCloudinaryUrl;
+    } else {
+      image = this.state.imageURL;
+    }
+
     return (
       <div className="newPost">
         <div className="formContainer">
           <h2>Title</h2>
-          <input type="text" onChange={this.savePostTitle} />
+          <input
+            type="text"
+            onChange={this.savePostTitle}
+            defaultValue={this.state.postTitle}
+          />
           <h2>Entry</h2>
-          <textarea onChange={this.savePostText} />
+          <textarea onChange={this.savePostText} value={this.state.postText} />
+
           <h2>Images</h2>
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
@@ -130,18 +145,15 @@ class EditPost extends React.Component {
             }}
           </Dropzone>
           <div>
-            {this.state.uploadedFileCloudinaryUrl === "" ? null : (
-              <div>
-                <img
-                  className="uploadSample"
-                  src={this.state.uploadedFileCloudinaryUrl}
-                />
-              </div>
-            )}
+            <img className="uploadSample" src={image} />
           </div>
           <h2>Video URL</h2>
-          <input type="text" onChange={this.saveVideoLink} />
-          <button onClick={this.makePost}>Re-Post</button>
+          <input
+            type="text"
+            onChange={this.saveVideoLink}
+            defaultValue={this.state.videoLink}
+          />
+          <button onClick={this.putPost}>Re-Post</button>
         </div>
       </div>
     );
