@@ -92,7 +92,6 @@ class NewPost extends React.Component {
   }
 
   render() {
-    // TODO: allow multiple images
     // TODO: allow multiple videos
     return (
       <div className="newPost">
@@ -119,14 +118,7 @@ class NewPost extends React.Component {
           <div>
             {this.state.uploadedFileCloudinaryUrl.length === 0
               ? null
-              : // <div>
-                //   <img
-                //     className="uploadSample"
-                //     src={this.state.uploadedFileCloudinaryUrl}
-                //     alt="upload sample"
-                //   />
-                // </div>
-                this.state.uploadedFileCloudinaryUrl.map((image, index) => {
+              : this.state.uploadedFileCloudinaryUrl.map((image, index) => {
                   return (
                     <div key={index}>
                       <img

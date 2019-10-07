@@ -16,7 +16,7 @@ class EditPost extends React.Component {
       postDate: moment().format("M/D/YY"),
       postTitle: "",
       postText: "",
-      imageURL: "",
+      imageURL: [],
       videoLink: "",
       uploadedFileCloudinaryUrl: ""
     };
@@ -36,7 +36,7 @@ class EditPost extends React.Component {
           postDate: response.data[0].date,
           postTitle: response.data[0].title,
           postText: response.data[0].entry,
-          imageURL: response.data[0].imageURL,
+          imageURL: response.data[0].imageURL.split(","),
           videoLink: response.data[0].videoURL
         });
       })
@@ -48,17 +48,18 @@ class EditPost extends React.Component {
   onImageDrop(files) {
     this.setState({
       uploadedFile: files
-      // uploadedFile: files[0]
     });
 
-    // this.handleImageUpload(files[0]);
-    this.handleImageUpload(files);
+    this.state.uploadedFile.forEach(image => {
+      this.handleImageUpload(image);
+    });
   }
 
   handleImageUpload(file) {
-    let upload = request
-      // .post(keys.cloudinaryUploadUrl)
-      // .field("upload_preset", keys.cloudinaryUploadPreset)
+    let upload;
+    upload = request
+      .post(process.env.REACT_APP_CLOUDINARYUPLOADURL)
+      .field("upload_preset", process.env.REACT_APP_CLOUDINARYUPLOADPRESET)
       .field("file", file);
 
     upload.end((err, response) => {
@@ -68,7 +69,10 @@ class EditPost extends React.Component {
 
       if (response.body.secure_url !== "") {
         this.setState({
-          uploadedFileCloudinaryUrl: response.body.secure_url
+          uploadedFileCloudinaryUrl: [
+            ...this.state.uploadedFileCloudinaryUrl,
+            response.body.secure_url
+          ]
         });
       }
     });
@@ -88,7 +92,6 @@ class EditPost extends React.Component {
 
   putPost() {
     axios
-      // .put("/posts", {
       .post("/editpost", {
         id: this.state.postID,
         title: this.state.postTitle,
@@ -106,7 +109,6 @@ class EditPost extends React.Component {
   }
 
   render() {
-    // TODO: allow multiple images
     // TODO: allow multiple videos
     let image;
     if (this.state.uploadedFileCloudinaryUrl !== "") {
@@ -117,7 +119,13 @@ class EditPost extends React.Component {
 
     let imageSample;
     if (image) {
-      imageSample = <img className="uploadSample" src={image} alt="sample" />;
+      imageSample = image.map((image, index) => {
+        return (
+          <div key={index}>
+            <img className="uploadSample" src={image} alt="upload sample" />
+          </div>
+        );
+      });
     }
 
     return (
@@ -136,7 +144,6 @@ class EditPost extends React.Component {
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
             accept="image/*"
-            // multiple={false}
             multiple={true}
           >
             {({ getRootProps, getInputProps }) => {
