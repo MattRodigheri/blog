@@ -3,7 +3,6 @@ import moment from "moment";
 import axios from "axios";
 import Dropzone from "react-dropzone";
 import request from "superagent";
-// import keys from "../../../keys.js";
 import { withRouter } from "react-router-dom";
 import imageIcon from "./assets/imageIcon.png";
 

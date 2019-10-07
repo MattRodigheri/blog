@@ -130,7 +130,7 @@ class NewPost extends React.Component {
                   );
                 })}
           </div>
-          <h2>Video URL</h2>
+          <h2>Video URL (add multiple urls separated by commas)</h2>
           <input type="text" onChange={this.saveVideoLink} />
           <button onClick={this.makePost}>Post</button>
         </div>

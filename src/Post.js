@@ -6,14 +6,17 @@ import { Link } from "react-router-dom";
 const Post = props => {
   let video;
   if (props.post.videoURL !== "") {
-    video = (
-      <ReactPlayer
-        className="video"
-        width="100%"
-        url={props.post.videoURL}
-        controls={true}
-      />
-    );
+    video = props.post.videoURL.split(",").map((video, index) => {
+      return (
+        <ReactPlayer
+          key={index}
+          className="video"
+          width="100%"
+          url={video}
+          controls={true}
+        />
+      );
+    });
   }
 
   let edit;
@@ -30,7 +33,6 @@ const Post = props => {
 
   let imageSrc;
   if (props.post.imageURL) {
-    // imageSrc = <img src={props.post.imageURL} alt="url" />;
     imageSrc = props.post.imageURL.split(",").map((image, index) => {
       return <img src={image} alt="url" key={index} />;
     });
