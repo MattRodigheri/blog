@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
 });
 
 const getPosts = data => {
-  connection.query("SELECT * FROM posts ORDER BY id DESC", (err, res) => {
+  connection.query("SELECT * FROM posts ORDER BY id DESC;", (err, res) => {
     if (err) {
       data(err, null);
     } else {
@@ -27,11 +27,7 @@ const getSinglePost = (input, data) => {
 
 const addPost = (input, callback) => {
   connection.query(
-    `INSERT INTO posts (date, title, entry, imageURL, videoURL) VALUES ('${
-      input.date
-    }', '${input.title}', '${input.text}', '${input.image}', '${
-      input.video
-    }');`,
+    `INSERT INTO posts (date, title, entry, imageURL, videoURL) VALUES ('${input.date}', '${input.title}', '${input.text}', '${input.image}', '${input.video}');`,
     err => {
       if (err) {
         console.log(err);

@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import Post from "./Post.jsx";
-import bolt from "../../../assets/pizzabolt.png";
-import logo from "../../../assets/logo.gif";
-import styles from "./../styles/AllPosts.css";
+import Post from "./Post.js";
+import bolt from "./assets/pizzabolt.png";
+import logo from "./assets/logo.gif";
+import { withRouter } from "react-router-dom";
 
 class AllPosts extends React.Component {
   constructor() {
@@ -16,7 +16,7 @@ class AllPosts extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/api/posts")
+      .get("/posts")
       .then(response => {
         this.setState({
           posts: response.data
@@ -39,7 +39,7 @@ class AllPosts extends React.Component {
     });
 
     axios
-      .delete("/api/posts", {
+      .delete("/posts", {
         data: { id }
       })
       .then(response => {
@@ -63,9 +63,9 @@ class AllPosts extends React.Component {
     return (
       <div className="allPosts">
         <div className="logoContainer">
-          <img className="boltL" src={bolt} />
-          <img className="logo" src={logo} />
-          <img className="boltR" src={bolt} />
+          <img className="boltL" src={bolt} alt="left bolt" />
+          <img className="logo" src={logo} alt="logo" />
+          <img className="boltR" src={bolt} alt="right bolt" />
         </div>
         <div>{posts}</div>
       </div>
@@ -73,4 +73,4 @@ class AllPosts extends React.Component {
   }
 }
 
-export default AllPosts;
+export default withRouter(AllPosts);

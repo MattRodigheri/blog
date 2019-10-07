@@ -4,9 +4,7 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import Dropzone from "react-dropzone";
 import request from "superagent";
-import keys from "../../../keys.js";
-import styles from "./../styles/NewPost.css";
-import imageIcon from "../../../assets/imageIcon.png";
+import imageIcon from "./assets/imageIcon.png";
 
 class NewPost extends React.Component {
   constructor(props) {
@@ -38,8 +36,10 @@ class NewPost extends React.Component {
 
   handleImageUpload(file) {
     let upload = request
-      .post(keys.cloudinaryUploadUrl)
-      .field("upload_preset", keys.cloudinaryUploadPreset)
+      // .post(keys.cloudinaryUploadUrl)
+      // .field("upload_preset", keys.cloudinaryUploadPreset)
+      .post(process.env.cloudinaryUploadUrl)
+      .field("upload_preset", process.env.cloudinaryUploadPreset)
       .field("file", file);
 
     upload.end((err, response) => {
@@ -72,7 +72,7 @@ class NewPost extends React.Component {
       alert("A title is required");
     } else {
       axios
-        .post("/api/posts", {
+        .post("/posts", {
           date: this.state.postDate,
           title: this.state.postTitle,
           text: this.state.postText,
@@ -110,7 +110,7 @@ class NewPost extends React.Component {
               return (
                 <div className="dropzone" {...getRootProps()}>
                   <input {...getInputProps()} />
-                  {<img src={imageIcon} />}
+                  {<img src={imageIcon} alt="icon" />}
                 </div>
               );
             }}
@@ -121,6 +121,7 @@ class NewPost extends React.Component {
                 <img
                   className="uploadSample"
                   src={this.state.uploadedFileCloudinaryUrl}
+                  alt="upload sample"
                 />
               </div>
             )}

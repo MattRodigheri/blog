@@ -1,13 +1,11 @@
 import React from "react";
 import moment from "moment";
 import axios from "axios";
-// import { withRouter } from "react-router-dom";
 import Dropzone from "react-dropzone";
 import request from "superagent";
-import keys from "../../../keys.js";
-import styles from "./../styles/NewPost.css";
-// import styles from "./../styles/EditPost.css";
-import imageIcon from "../../../assets/imageIcon.png";
+// import keys from "../../../keys.js";
+import { withRouter } from "react-router-dom";
+import imageIcon from "./assets/imageIcon.png";
 
 class EditPost extends React.Component {
   constructor() {
@@ -31,7 +29,7 @@ class EditPost extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/api/post", { params: { id: this.props.match.params.postId } })
+      .get("/post", { params: { id: this.props.match.params.postId } })
       .then(response => {
         this.setState({
           postID: response.data[0].id,
@@ -59,8 +57,8 @@ class EditPost extends React.Component {
 
   handleImageUpload(file) {
     let upload = request
-      .post(keys.cloudinaryUploadUrl)
-      .field("upload_preset", keys.cloudinaryUploadPreset)
+      // .post(keys.cloudinaryUploadUrl)
+      // .field("upload_preset", keys.cloudinaryUploadPreset)
       .field("file", file);
 
     upload.end((err, response) => {
@@ -90,9 +88,9 @@ class EditPost extends React.Component {
 
   putPost() {
     axios
-      .put("/api/posts", {
+      // .put("/posts", {
+      .post("/editpost", {
         id: this.state.postID,
-        // date: this.state.postDate,
         title: this.state.postTitle,
         entry: this.state.postText,
         imageURL: this.state.uploadedFileCloudinaryUrl,
@@ -115,6 +113,11 @@ class EditPost extends React.Component {
       image = this.state.uploadedFileCloudinaryUrl;
     } else {
       image = this.state.imageURL;
+    }
+
+    let imageSample;
+    if (image) {
+      imageSample = <img className="uploadSample" src={image} alt="sample" />;
     }
 
     return (
@@ -140,14 +143,12 @@ class EditPost extends React.Component {
               return (
                 <div className="dropzone" {...getRootProps()}>
                   <input {...getInputProps()} />
-                  {<img src={imageIcon} />}
+                  {<img src={imageIcon} alt="icon" />}
                 </div>
               );
             }}
           </Dropzone>
-          <div>
-            <img className="uploadSample" src={image} />
-          </div>
+          <div>{imageSample}</div>
           <h2>Video URL</h2>
           <input
             type="text"
@@ -161,5 +162,4 @@ class EditPost extends React.Component {
   }
 }
 
-// export default withRouter(EditPost);
-export default EditPost;
+export default withRouter(EditPost);

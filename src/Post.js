@@ -1,9 +1,7 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-import auth0Client from "./Auth.jsx";
-import axios from "axios";
-import styles from "./../styles/Post.css";
+// import auth0Client from "./Auth.jsx";
 
 const Post = props => {
   let video;
@@ -19,17 +17,20 @@ const Post = props => {
   }
 
   let edit;
-  if (auth0Client.isAuthenticated()) {
-    edit = (
-      <div className="editPost">
-        <button onClick={() => props.deletePost(props.post.id)}>Delete</button>
-        {/* <Link to={`/editpost`}> */}
-        <Link to={`/${props.post.id}/edit`}>
-          {/* <Link to={`/${props.post.id}`}> */}
-          <button>Edit</button>
-        </Link>
-      </div>
-    );
+  // if (auth0Client.isAuthenticated()) {
+  edit = (
+    <div className="editPost">
+      <button onClick={() => props.deletePost(props.post.id)}>Delete</button>
+      <Link to={`/${props.post.id}/edit`}>
+        <button>Edit</button>
+      </Link>
+    </div>
+  );
+  // }
+
+  let imageSrc;
+  if (props.post.imageURL) {
+    imageSrc = <img src={props.post.imageURL} alt="url" />;
   }
 
   return (
@@ -41,7 +42,7 @@ const Post = props => {
           <h2>{props.post.title}</h2>
         </Link>
         <p>{props.post.entry}</p>
-        <img src={props.post.imageURL} />
+        {imageSrc}
         {video}
       </div>
     </div>

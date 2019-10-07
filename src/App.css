@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+}
+
+html {
+  background-color: #fff;
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  background-image: linear-gradient(
+      45deg,
+      black 25%,
+      transparent 25%,
+      transparent 75%,
+      black 75%,
+      black
+    ),
+    linear-gradient(
+      45deg,
+      black 25%,
+      transparent 25%,
+      transparent 75%,
+      black 75%,
+      black
+    );
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 4em;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4em;
+  background-color: #99fc20;
+}
+
+.navbar {
+  height: 4em;
+  background-color: #a10eec;
+  width: 100%;
+}
+
+.loggedIn {
+  float: right;
+}
+
+@font-face {
+  font-family: "Streamster";
+  src: url("./assets/Streamster.ttf");
+}
+
+.navbar a {
+  font-family: Streamster;
+  font-size: 2em;
+  color: #00e6fe;
+  line-height: 2em;
+  padding: 0 18px;
+  text-decoration: none;
+  display: inline;
+  margin: 0 0.5em;
+}
+
+.navbar button {
+  font-family: Streamster;
+  background-color: Transparent;
+  border: none;
+  color: #00e6fe;
+  padding: 6px 18px;
+  cursor: pointer;
+  font-size: 2em;
+  float: right;
+  margin-right: 1em;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.post {
+  margin: 3em auto;
+  line-height: 3em;
+  padding: 3% 3%;
+  width: 40%;
+  background-color: #fff;
+  border: 5px solid #fd1999;
+  border-radius: 5px;
+}
+
+.post img {
+  width: 100%;
+}
+
+.video {
+  width: 100%;
+}
+
+h5 {
+  font-family: Streamster;
+  color: #00e6fe;
+  margin-top: -2em;
+  float: right;
+}
+
+h2 {
+  font-family: "Comic Sans MS";
+  color: #a10eec;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-family: "Comic Sans MS";
+}
+
+.editPost {
+  margin: 0 20% 0 0;
+  float: right;
+}
+
+.editPost button {
+  display: block;
+  margin-bottom: 1em;
+  background-color: #a10eec;
+  border: none;
+  color: white;
+  width: 5em;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  font-family: "Comic Sans MS";
+  border-radius: 5px;
+}
+
+.postContainer {
+  margin: 3em auto;
+  line-height: 3em;
+  padding: 0 3%;
+  width: 40%;
+  background-color: #fff;
+  border: 5px solid #fd1999;
+  border-radius: 5px;
+}
+
+.sharebtnContainer {
+  float: right;
+  margin-right: -15%;
+}
+
+.sharebtn {
+  margin-bottom: 1em;
+}
+
+.sharebtn:focus {
+  outline: 0;
+}
+
+.singlePost {
+  margin-top: 2em;
+}
+
+.singlePost img {
+  width: 100%;
+}
+
+.newPost {
+  margin: 3em auto;
+  line-height: 3em;
+  padding: 0 3%;
+  width: 40%;
+  background-color: #fff;
+  border: 5px solid #fd1999;
+  border-radius: 5px;
+}
+
+.newPost h2 {
+  font-family: Streamster;
+  color: #00e6fe;
+}
+
+.formContainer {
+  margin-top: 1em;
+}
+
+.formContainer input[type="text"],
+textarea {
+  width: 70%;
+  box-sizing: border-box;
+  border: 3px solid #99fc20;
+  outline: none;
+  resize: none;
+  height: 3em;
+  margin: 1em 0;
+  border-radius: 5px;
+  font-size: 1em;
+  font-family: "Comic Sans MS";
+  padding-left: 1em;
+}
+
+.formContainer textarea {
+  height: 12em;
+  font-size: 0.75em;
+}
+
+.dropzone {
+  width: 70%;
+  height: 3em;
+  display: block;
+  border: 3px dotted #99fc20;
+  box-sizing: border-box;
+  margin: 1em 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropzone:focus {
+  outline: 0;
+}
+
+.dropzone p {
+  text-align: center;
+}
+
+.dropzone img {
+  width: 2em;
+  display: block;
+  margin: 0.5em auto;
+}
+
+.uploadSample {
+  width: 100%;
+}
+
+.newPost button {
+  display: block;
+  margin: 1em 0 1em 80%;
+  background-color: #a10eec;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  font-family: "Comic Sans MS";
+  border-radius: 5px;
+}
+
+.logoContainer {
+  clear: both;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-items: center;
+}
+
+.logo {
+  width: 110%;
+  height: auto;
+  margin-top: 4em;
+}
+
+.boltL {
+  width: 45%;
+  height: auto;
+  transform: scaleX(-1) rotate(20deg);
+  margin-top: 2em;
+}
+
+.boltR {
+  width: 45%;
+  height: auto;
+  transform: rotate(20deg);
+  margin-top: 2em;
+}
