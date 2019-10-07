@@ -30,7 +30,10 @@ const Post = props => {
 
   let imageSrc;
   if (props.post.imageURL) {
-    imageSrc = <img src={props.post.imageURL} alt="url" />;
+    // imageSrc = <img src={props.post.imageURL} alt="url" />;
+    imageSrc = props.post.imageURL.split(",").map((image, index) => {
+      return <img src={image} alt="url" key={index} />;
+    });
   }
 
   return (

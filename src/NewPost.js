@@ -14,7 +14,7 @@ class NewPost extends React.Component {
       postDate: moment().format("M/D/YY"),
       postTitle: "",
       postText: "",
-      uploadedFileCloudinaryUrl: "",
+      uploadedFileCloudinaryUrl: [],
       videoLink: ""
     };
 
@@ -27,15 +27,16 @@ class NewPost extends React.Component {
   onImageDrop(files) {
     this.setState({
       uploadedFile: files
-      // uploadedFile: files[0]
     });
 
-    // this.handleImageUpload(files[0]);
-    this.handleImageUpload(files);
+    this.state.uploadedFile.forEach(image => {
+      this.handleImageUpload(image);
+    });
   }
 
   handleImageUpload(file) {
-    let upload = request
+    let upload;
+    upload = request
       .post(process.env.REACT_APP_CLOUDINARYUPLOADURL)
       .field("upload_preset", process.env.REACT_APP_CLOUDINARYUPLOADPRESET)
       .field("file", file);
@@ -47,7 +48,10 @@ class NewPost extends React.Component {
 
       if (response.body.secure_url !== "") {
         this.setState({
-          uploadedFileCloudinaryUrl: response.body.secure_url
+          uploadedFileCloudinaryUrl: [
+            ...this.state.uploadedFileCloudinaryUrl,
+            response.body.secure_url
+          ]
         });
       }
     });
@@ -101,7 +105,6 @@ class NewPost extends React.Component {
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
             accept="image/*"
-            // multiple={false}
             multiple={true}
           >
             {({ getRootProps, getInputProps }) => {
@@ -114,15 +117,26 @@ class NewPost extends React.Component {
             }}
           </Dropzone>
           <div>
-            {this.state.uploadedFileCloudinaryUrl === "" ? null : (
-              <div>
-                <img
-                  className="uploadSample"
-                  src={this.state.uploadedFileCloudinaryUrl}
-                  alt="upload sample"
-                />
-              </div>
-            )}
+            {this.state.uploadedFileCloudinaryUrl.length === 0
+              ? null
+              : // <div>
+                //   <img
+                //     className="uploadSample"
+                //     src={this.state.uploadedFileCloudinaryUrl}
+                //     alt="upload sample"
+                //   />
+                // </div>
+                this.state.uploadedFileCloudinaryUrl.map((image, index) => {
+                  return (
+                    <div key={index}>
+                      <img
+                        className="uploadSample"
+                        src={image}
+                        alt="upload sample"
+                      />
+                    </div>
+                  );
+                })}
           </div>
           <h2>Video URL</h2>
           <input type="text" onChange={this.saveVideoLink} />
