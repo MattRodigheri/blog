@@ -92,7 +92,6 @@ class NewPost extends React.Component {
   }
 
   render() {
-    // TODO: allow multiple videos
     return (
       <div className="newPost">
         <div className="formContainer">

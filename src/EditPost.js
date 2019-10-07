@@ -108,7 +108,6 @@ class EditPost extends React.Component {
   }
 
   render() {
-    // TODO: allow multiple videos
     let image;
     if (this.state.uploadedFileCloudinaryUrl !== "") {
       image = this.state.uploadedFileCloudinaryUrl;
@@ -117,14 +116,16 @@ class EditPost extends React.Component {
     }
 
     let imageSample;
-    if (image) {
-      imageSample = image.map((image, index) => {
+    if (image[0] !== "") {
+      imageSample = image.map((item, index) => {
         return (
           <div key={index}>
-            <img className="uploadSample" src={image} alt="upload sample" />
+            <img className="uploadSample" src={item} alt="upload sample" />
           </div>
         );
       });
+    } else {
+      imageSample = <div></div>;
     }
 
     return (
