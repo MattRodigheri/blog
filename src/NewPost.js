@@ -36,10 +36,8 @@ class NewPost extends React.Component {
 
   handleImageUpload(file) {
     let upload = request
-      // .post(keys.cloudinaryUploadUrl)
-      // .field("upload_preset", keys.cloudinaryUploadPreset)
-      .post(process.env.cloudinaryUploadUrl)
-      .field("upload_preset", process.env.cloudinaryUploadPreset)
+      .post(process.env.REACT_APP_CLOUDINARYUPLOADURL)
+      .field("upload_preset", process.env.REACT_APP_CLOUDINARYUPLOADPRESET)
       .field("file", file);
 
     upload.end((err, response) => {
