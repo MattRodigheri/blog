@@ -9,9 +9,11 @@
     "commentbox.io": "^2.0.0",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
     "jwks-rsa": "^1.6.0",
     "moment": "^2.24.0",
     "mysql": "^2.17.1",
+    "path": "^0.12.7",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-dropzone": "^10.1.9",
@@ -22,7 +24,7 @@
     "superagent": "^5.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

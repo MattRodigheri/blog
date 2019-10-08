@@ -8,7 +8,7 @@ class Callback extends Component {
   }
 
   render() {
-    return <p>Loading</p>;
+    return <p>No</p>;
   }
 }
 

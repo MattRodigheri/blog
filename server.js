@@ -1,7 +1,18 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const controllers = require("./database.js");
 const bodyParser = require("body-parser");
+const favicon = require("express-favicon");
+const path = require("path");
+const port = process.env.PORT || 8080;
+app.use(favicon(__dirname + "/build/favicon.ico"));
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
@@ -50,6 +61,6 @@ app.delete("/posts", bodyParser.json(), (req, res) => {
   });
 });
 
-app.listen(3001, () => {
-  console.log("listening on port 3001!");
+app.listen(port, () => {
+  console.log(`listening on port ${port}!`);
 });
