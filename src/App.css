@@ -114,6 +114,11 @@ h2 {
   color: #a10eec;
 }
 
+h2:hover {
+  cursor: pointer;
+  -webkit-text-stroke: 1.5px #99fc20;
+}
+
 a {
   text-decoration: none;
 }

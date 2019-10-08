@@ -2,10 +2,6 @@ import React from "react";
 import commentBox from "commentbox.io";
 
 class CommentBox extends React.Component {
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
     this.removeCommentBox = commentBox(process.env.REACT_APP_COMMENTID);
   }
