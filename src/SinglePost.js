@@ -13,6 +13,7 @@ import {
   EmailShareButton,
   EmailIcon
 } from "react-share";
+import CommentBox from "./CommentBox.js";
 
 class SinglePost extends React.Component {
   constructor() {
@@ -51,7 +52,6 @@ class SinglePost extends React.Component {
 
     let imageSrc;
     if (this.state.postData.imageURL && this.state.postData.imageURL !== "") {
-      console.log(this.state.postData.imageURL);
       imageSrc = this.state.postData.imageURL.split(",").map((image, index) => {
         return <img src={image} alt="url" key={index} />;
       });
@@ -60,7 +60,6 @@ class SinglePost extends React.Component {
     return (
       <div className="postContainer">
         <div className="sharebtnContainer">
-          {/* TODO: add comments section */}
           <FacebookShareButton className="sharebtn" url={window.location.href}>
             <FacebookIcon size={24} round={true} />
           </FacebookShareButton>
@@ -81,10 +80,10 @@ class SinglePost extends React.Component {
           <h5>{this.state.postData.date}</h5>
           <h2>{this.state.postData.title}</h2>
           <p>{this.state.postData.entry}</p>
-          {/* <img src={this.state.postData.imageURL} alt="url" /> */}
           {imageSrc}
           {video}
         </div>
+        <CommentBox />
       </div>
     );
   }
