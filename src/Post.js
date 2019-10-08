@@ -1,7 +1,7 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-// import auth0Client from "./Auth.jsx";
+import auth0Client from "./Auth.js";
 
 const Post = props => {
   let video;
@@ -20,16 +20,16 @@ const Post = props => {
   }
 
   let edit;
-  // if (auth0Client.isAuthenticated()) {
-  edit = (
-    <div className="editPost">
-      <button onClick={() => props.deletePost(props.post.id)}>Delete</button>
-      <Link to={`/${props.post.id}/edit`}>
-        <button>Edit</button>
-      </Link>
-    </div>
-  );
-  // }
+  if (auth0Client.isAuthenticated()) {
+    edit = (
+      <div className="editPost">
+        <button onClick={() => props.deletePost(props.post.id)}>Delete</button>
+        <Link to={`/${props.post.id}/edit`}>
+          <button>Edit</button>
+        </Link>
+      </div>
+    );
+  }
 
   let imageSrc;
   if (props.post.imageURL) {
@@ -44,7 +44,7 @@ const Post = props => {
       <div className="post" id={props.post.id}>
         <h5>{props.post.date}</h5>
         <Link to={`/${props.post.id}`}>
-          <h2>{props.post.title}</h2>
+          <h2 className="postTitle">{props.post.title}</h2>
         </Link>
         <p>{props.post.entry}</p>
         {imageSrc}

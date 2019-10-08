@@ -6,6 +6,9 @@ import AllPosts from "./AllPosts.js";
 import NewPost from "./NewPost.js";
 import EditPost from "./EditPost.js";
 import SinglePost from "./SinglePost.js";
+import SecuredRouteNew from "./SecuredRouteNew.js";
+import SecuredRouteEdit from "./SecuredRouteEdit.js";
+import Callback from "./Callback.js";
 
 function App() {
   return (
@@ -17,9 +20,9 @@ function App() {
             <Route exact path="/" component={AllPosts} />
             <Route exact path="/:postId/edit" component={EditPost} />
             <Route exact path="/newpost" component={NewPost} />
-            {/* <Route exact path="/callback" component={Callback} /> */}
-            {/* <SecuredRouteNew path="/newpost" component={NewPost} />
-            <SecuredRouteEdit path="/:postId/edit" component={EditPost} /> */}
+            <Route exact path="/callback" component={Callback} />
+            <SecuredRouteNew path="/newpost" component={NewPost} />
+            <SecuredRouteEdit path="/:postId/edit" component={EditPost} />
             <Route exact path="/:postId" component={SinglePost} />
           </Switch>
         </Router>

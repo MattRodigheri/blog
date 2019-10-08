@@ -40,7 +40,6 @@ class SinglePost extends React.Component {
   render() {
     let video;
     if (this.state.postData.videoURL && this.state.postData.videoURL !== "") {
-      console.log(this.state.postData.videoURL.split(","));
       video = this.state.postData.videoURL.split(",").map((video, index) => {
         return (
           <ReactPlayer
