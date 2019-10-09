@@ -6,7 +6,7 @@ class Auth {
       domain: process.env.REACT_APP_DOMAIN,
       audience: `https://${process.env.REACT_APP_DOMAIN}/userinfo`,
       clientID: process.env.REACT_APP_CLIENTID,
-      // redirectUri: "https://matts-blog.herokuapp.com/callback",
+      redirectUri: "https://matts-blog.herokuapp.com/callback",
       // redirectUri: "http://localhost:3000/callback",
       responseType: "id_token",
       scope: "openid profile"
