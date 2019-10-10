@@ -3,8 +3,10 @@ import auth0 from "auth0-js";
 class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      audience: `https://${process.env.AUTH0_DOMAIN}/userinfo`,
+      // domain: process.env.AUTH0_DOMAIN,
+      domain: "dev-ducjzthz.auth0.com",
+      // audience: `https://${process.env.AUTH0_DOMAIN}/userinfo`,
+      audience: `https://dev-ducjzthz.auth0.com/userinfo`,
       clientID: process.env.AUTH0_CLIENTID,
       redirectUri: "https://matts-blog.herokuapp.com/callback",
       // redirectUri: "http://localhost:3000/callback",
