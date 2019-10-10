@@ -19,8 +19,6 @@ class Auth {
     this.signOut = this.signOut.bind(this);
   }
 
-  console.log()
-
   getProfile() {
     return this.profile;
   }
