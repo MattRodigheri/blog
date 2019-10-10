@@ -5,7 +5,7 @@ const controllers = require("./database.js");
 const bodyParser = require("body-parser");
 const favicon = require("express-favicon");
 const path = require("path");
-const port = 3001;
+const port = process.env.PORT || 3001;
 app.use(favicon(__dirname + "/build/favicon.ico"));
 
 app.use(express.static(__dirname));
