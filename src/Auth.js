@@ -3,12 +3,12 @@ import auth0 from "auth0-js";
 class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
-      // domain: process.env.AUTH0_DOMAIN,
-      domain: "dev-ducjzthz.auth0.com",
-      // audience: `https://${process.env.AUTH0_DOMAIN}/userinfo`,
-      audience: `https://dev-ducjzthz.auth0.com/userinfo`,
-      // clientID: process.env.AUTH0_CLIENTID,
-      clientID: "imkbbw2zWJVbrFX8ddjLte406E2TVX7m",
+      domain: process.env.REACT_APP_DOMAIN,
+      // domain: "dev-ducjzthz.auth0.com",
+      audience: `https://${process.env.REACT_APP_DOMAIN}/userinfo`,
+      // audience: `https://dev-ducjzthz.auth0.com/userinfo`,
+      clientID: process.env.REACT_APP_CLIENTID,
+      // clientID: "imkbbw2zWJVbrFX8ddjLte406E2TVX7m",
       redirectUri: "https://matts-blog.herokuapp.com/callback",
       // redirectUri: "http://localhost:3000/callback",
       responseType: "id_token",
