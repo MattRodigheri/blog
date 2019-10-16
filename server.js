@@ -24,12 +24,6 @@ app.get("/posts", (req, res) => {
   });
 });
 
-//FIRST ATTEMPT
-// app.get("/*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
-
-//SECOND ATTEMPT
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/build/index.html"));
 });
