@@ -24,10 +24,6 @@ app.get("/posts", (req, res) => {
   });
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/build/index.html"));
-});
-
 app.get("/post", (req, res) => {
   controllers.getSinglePost(req.query.id, (err, data) => {
     if (err) {
@@ -60,6 +56,10 @@ app.delete("/posts", bodyParser.json(), (req, res) => {
       res.status(500).send(err);
     }
   });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
 app.listen(port, () => {

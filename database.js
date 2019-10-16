@@ -1,8 +1,13 @@
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
-  user: "root",
-  database: "blog"
+  // user: "root",
+  // //password: "43e30741",
+  // database: "blog"
+  host: "us-cdbr-iron-east-05.cleardb.net",
+  user: "ba72e2e7695186",
+  password: "43e30741",
+  database: "heroku_f6e1aff5bda0a20"
 });
 
 const getPosts = data => {
