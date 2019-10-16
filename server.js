@@ -11,10 +11,6 @@ app.use(favicon(__dirname + "/build/favicon.ico"));
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, "build")));
 
-// app.get("/*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -26,6 +22,16 @@ app.get("/posts", (req, res) => {
       res.send(data);
     }
   });
+});
+
+//FIRST ATTEMPT
+// app.get("/*", function(req, res) {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
+
+//SECOND ATTEMPT
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
 app.get("/post", (req, res) => {
